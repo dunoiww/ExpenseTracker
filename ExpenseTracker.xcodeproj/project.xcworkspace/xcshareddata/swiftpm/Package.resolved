@@ -1,0 +1,32 @@
+{
+  "pins" : [
+    {
+      "identity" : "cardstack",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/notsobigcompany/CardStack",
+      "state" : {
+        "revision" : "33417ef29fdc4169712cb3b8bf0ddbd7b6ef52c5",
+        "version" : "1.0.0"
+      }
+    },
+    {
+      "identity" : "chartview",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/AppPear/ChartView",
+      "state" : {
+        "revision" : "caa75ecbc0d68f2b50d714909566406f80214186",
+        "version" : "2.0.0-beta.2"
+      }
+    },
+    {
+      "identity" : "swiftuifonticon",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/huybuidac/SwiftUIFontIcon",
+      "state" : {
+        "revision" : "4f170fbf443d985ae518a14a12ec8194ec6b08eb",
+        "version" : "2.1.0"
+      }
+    }
+  ],
+  "version" : 2
+}
