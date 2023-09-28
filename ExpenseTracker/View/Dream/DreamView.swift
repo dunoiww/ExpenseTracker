@@ -6,12 +6,33 @@
 //
 
 import SwiftUI
+import SwiftUICharts
 
 struct DreamView: View {
+    @StateObject var viewModel = DreamViewViewModel()
+    
     var body: some View {
         NavigationView {
             ScrollView {
                 
+                Text("The List of your Dream!")
+                    .font(.title)
+                    .padding()
+                
+                ForEach(viewModel.dreamGoalList) { dream in
+                    NavigationLink {
+                        DreamDetailView(dreamGoal: dream)
+                    } label: {
+                        VStack {
+                            DreamGoalRow(dreamgoal: dream)
+                        }
+                        .padding(.horizontal)
+                    }
+                }
+                
+                RoundedRectangle(cornerRadius: 20)
+                    .frame(height: 50)
+                    .foregroundColor(Color("Background"))
             }
             .background(Color("Background"))
             .toolbar {

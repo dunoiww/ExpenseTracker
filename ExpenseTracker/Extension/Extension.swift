@@ -8,13 +8,6 @@
 import Foundation
 import SwiftUI
 
-extension View {
-    func stacked(at position: Int, total: Int) -> some View {
-        let offset = Double(total - position)
-        return self.offset(x: offset * 50, y: 0)
-    }
-}
-
 extension DateFormatter {
     static let vietnameseDateFormat: DateFormatter = {
         let formatter = DateFormatter()

@@ -40,7 +40,7 @@ struct ContentView: View {
                     Image("dungi")
                         .frame(width: UIScreen.main.bounds.width, height: 65)
                         .offset(x: 3)
-                        .shadow(color: .primary.opacity(0.2), radius: 10, x: 0, y: -2)
+                        .shadow(color: .primary.opacity(0.2), radius: 10, x: 0, y: 2)
                     
                     HStack {
                         HStack(alignment: .center) {
@@ -132,6 +132,7 @@ struct ContentView: View {
         }
         .sheet(isPresented: $viewModel.showAddDream) {
             AddDream()
+                .presentationDetents([.large, .medium, .fraction(0.5)])
         }
     }
 }

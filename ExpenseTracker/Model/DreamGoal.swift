@@ -10,9 +10,16 @@ import Foundation
 struct DreamGoal: Identifiable {
     var id: UUID
     var dream: String
-    var icon: String
     var currentMoney: Double
     var expectedMoney: Double
-    var dateStart: Date
-    var dateExpected: Date
+    var dateStart: String
+    var dateExpected: String
+    
+    var dateStartParsed: Date {
+        dateStart.dateParsed()
+    }
+    
+    var dateExpectedParsed: Date {
+        dateExpected.dateParsed()
+    }
 }

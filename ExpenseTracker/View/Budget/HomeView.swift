@@ -26,6 +26,28 @@ struct HomeView: View {
                         VStack {
                             ChartLabel("100000vnd", type: .title)
                             LineChart()
+                            
+                            HStack {
+                                VStack {
+                                    Text("Income")
+                                        .foregroundColor(.green)
+                                        .fontWeight(.bold)
+                                    
+                                    Text("+$1000")
+                                        .foregroundColor(.green)
+                                }
+                                
+                                Spacer()
+                                
+                                VStack {
+                                    Text("Expense")
+                                        .foregroundColor(.red)
+                                        .fontWeight(.bold)
+                                    Text("-$2000")
+                                        .foregroundColor(.red)
+                                }
+                            }
+                            .padding(.horizontal, 50)
                         }
                     }
                     .data(demoData)

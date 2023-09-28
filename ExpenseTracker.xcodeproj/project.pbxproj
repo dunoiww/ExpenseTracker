@@ -43,6 +43,12 @@
 		5C8693492ABEBFEC0029BAC7 /* CardStack in Frameworks */ = {isa = PBXBuildFile; productRef = 5C8693482ABEBFEC0029BAC7 /* CardStack */; };
 		5C8693502AC2B5BC0029BAC7 /* AddCrediCardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C86934F2AC2B5BC0029BAC7 /* AddCrediCardViewModel.swift */; };
 		5C8693542AC2C1F80029BAC7 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C8693532AC2C1F80029BAC7 /* ImagePicker.swift */; };
+		5CC9F08E2AC3367000070777 /* DreamViewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CC9F08D2AC3367000070777 /* DreamViewViewModel.swift */; };
+		5CC9F0902AC33DDD00070777 /* DreamGoalRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CC9F08F2AC33DDD00070777 /* DreamGoalRow.swift */; };
+		5CC9F0922AC3537A00070777 /* DreamDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CC9F0912AC3537A00070777 /* DreamDetailView.swift */; };
+		5CC9F0942AC3F00A00070777 /* AddDreamViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CC9F0932AC3F00A00070777 /* AddDreamViewModel.swift */; };
+		5CF0BECA2AC5425400E3B573 /* AddMoneyDream.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CF0BEC92AC5425400E3B573 /* AddMoneyDream.swift */; };
+		5CF0BECC2AC5480F00E3B573 /* AddMoneyDreamViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CF0BECB2AC5480F00E3B573 /* AddMoneyDreamViewModel.swift */; };
 		5CFAFCEC2AB38B950066B9A5 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CFAFCEB2AB38B950066B9A5 /* User.swift */; };
 /* End PBXBuildFile section */
 
@@ -82,6 +88,12 @@
 		5C2DC2472ABC89ED00EF2032 /* QRViewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRViewViewModel.swift; sourceTree = "<group>"; };
 		5C86934F2AC2B5BC0029BAC7 /* AddCrediCardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCrediCardViewModel.swift; sourceTree = "<group>"; };
 		5C8693532AC2C1F80029BAC7 /* ImagePicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
+		5CC9F08D2AC3367000070777 /* DreamViewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DreamViewViewModel.swift; sourceTree = "<group>"; };
+		5CC9F08F2AC33DDD00070777 /* DreamGoalRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DreamGoalRow.swift; sourceTree = "<group>"; };
+		5CC9F0912AC3537A00070777 /* DreamDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DreamDetailView.swift; sourceTree = "<group>"; };
+		5CC9F0932AC3F00A00070777 /* AddDreamViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddDreamViewModel.swift; sourceTree = "<group>"; };
+		5CF0BEC92AC5425400E3B573 /* AddMoneyDream.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMoneyDream.swift; sourceTree = "<group>"; };
+		5CF0BECB2AC5480F00E3B573 /* AddMoneyDreamViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMoneyDreamViewModel.swift; sourceTree = "<group>"; };
 		5CFAFCEB2AB38B950066B9A5 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -119,7 +131,7 @@
 			isa = PBXGroup;
 			children = (
 				5C8693522AC2C1D30029BAC7 /* Extension */,
-				5C8693512AC2BC9F0029BAC7 /* Service */,
+				5C8693512AC2BC9F0029BAC7 /* DTOs */,
 				5C20A84F2AB8A6110037AB96 /* Components */,
 				5C03F4FA2AB34A5F00BF8F11 /* Model */,
 				5C03F4FC2AB3507D00BF8F11 /* UICommon */,
@@ -169,6 +181,7 @@
 		5C03F4FB2AB34A6500BF8F11 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				5CC9F08C2AC3365300070777 /* DreamVM */,
 				5C2DC2442ABC893900EF2032 /* CreditCardVM */,
 				5C2DC23F2ABB79C900EF2032 /* LoginVM */,
 				5C2DC23E2ABB79A500EF2032 /* BudgetVM */,
@@ -191,6 +204,8 @@
 			isa = PBXGroup;
 			children = (
 				5C20A8502AB8A6240037AB96 /* TransactionRow.swift */,
+				5CC9F08F2AC33DDD00070777 /* DreamGoalRow.swift */,
+				5CC9F0912AC3537A00070777 /* DreamDetailView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -200,6 +215,7 @@
 			children = (
 				5C20A8432AB4B07B0037AB96 /* DreamView.swift */,
 				5C2DC2362ABB74FA00EF2032 /* AddDream.swift */,
+				5CF0BEC92AC5425400E3B573 /* AddMoneyDream.swift */,
 			);
 			path = Dream;
 			sourceTree = "<group>";
@@ -277,11 +293,11 @@
 			path = CreditCardVM;
 			sourceTree = "<group>";
 		};
-		5C8693512AC2BC9F0029BAC7 /* Service */ = {
+		5C8693512AC2BC9F0029BAC7 /* DTOs */ = {
 			isa = PBXGroup;
 			children = (
 			);
-			path = Service;
+			path = DTOs;
 			sourceTree = "<group>";
 		};
 		5C8693522AC2C1D30029BAC7 /* Extension */ = {
@@ -291,6 +307,16 @@
 				5C20A8522AB8ABD70037AB96 /* Extension.swift */,
 			);
 			path = Extension;
+			sourceTree = "<group>";
+		};
+		5CC9F08C2AC3365300070777 /* DreamVM */ = {
+			isa = PBXGroup;
+			children = (
+				5CC9F08D2AC3367000070777 /* DreamViewViewModel.swift */,
+				5CC9F0932AC3F00A00070777 /* AddDreamViewModel.swift */,
+				5CF0BECB2AC5480F00E3B573 /* AddMoneyDreamViewModel.swift */,
+			);
+			path = DreamVM;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -378,9 +404,13 @@
 				5C20A84E2AB4BE0D0037AB96 /* SettingView.swift in Sources */,
 				5C20A85C2AB990380037AB96 /* TransactionRowViewModel.swift in Sources */,
 				5C20A8402AB4978E0037AB96 /* HomeViewViewModel.swift in Sources */,
+				5CF0BECA2AC5425400E3B573 /* AddMoneyDream.swift in Sources */,
 				5C20A83C2AB495210037AB96 /* MainViewViewModel.swift in Sources */,
 				5C20A8442AB4B07B0037AB96 /* DreamView.swift in Sources */,
 				5C20A8422AB4B06C0037AB96 /* QRView.swift in Sources */,
+				5CF0BECC2AC5480F00E3B573 /* AddMoneyDreamViewModel.swift in Sources */,
+				5CC9F0942AC3F00A00070777 /* AddDreamViewModel.swift in Sources */,
+				5CC9F08E2AC3367000070777 /* DreamViewViewModel.swift in Sources */,
 				5C20A8462AB4B0820037AB96 /* InfoView.swift in Sources */,
 				5C20A8582AB985BB0037AB96 /* RecentTransactionList.swift in Sources */,
 				5C20A83E2AB497670037AB96 /* HomeView.swift in Sources */,
@@ -391,6 +421,8 @@
 				5C2DC2372ABB74FA00EF2032 /* AddDream.swift in Sources */,
 				5C20A82E2AB44B770037AB96 /* CreditCard.swift in Sources */,
 				5C03F5042AB37F3F00BF8F11 /* RegisterView.swift in Sources */,
+				5CC9F0902AC33DDD00070777 /* DreamGoalRow.swift in Sources */,
+				5CC9F0922AC3537A00070777 /* DreamDetailView.swift in Sources */,
 				5CFAFCEC2AB38B950066B9A5 /* User.swift in Sources */,
 				5C20A8532AB8ABD70037AB96 /* Extension.swift in Sources */,
 				5C2DC2332ABB749C00EF2032 /* AddBudget.swift in Sources */,

@@ -118,6 +118,10 @@ struct QRView: View {
                     }
                     .padding()
                 }
+                
+                RoundedRectangle(cornerRadius: 20)
+                    .frame(height: 50)
+                    .foregroundColor(Color("Background"))
             }
             .background(Color("Background"))
             .toolbar {
