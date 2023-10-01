@@ -61,7 +61,7 @@ struct AddDream: View {
                 }
                 .scrollDisabled(true)
                 .tint(.pink)
-                .frame(height: 300)
+                .frame(height: 350)
                 .background(.gray.opacity(0.2))
                 .scrollContentBackground(.hidden)
                 .cornerRadius(20)

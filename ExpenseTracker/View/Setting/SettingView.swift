@@ -6,15 +6,50 @@
 //
 
 import SwiftUI
+import SwiftUICharts
 
 struct SettingView: View {
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack {
+            VStack {
+                HStack {
+                    Image(systemName: "dollarsign.square")
+                    Text("Chuyển đổi tiền tệ")
+                        .font(.system(size: 20))
+                        .fontWeight(.semibold)
+                        .padding(.leading, 4)
+                    Spacer()
+                    Image(systemName: "chevron.right")
+                }
+                
+                Divider()
+                
+                HStack {
+                    Image(systemName: "textformat")
+                    Text("Chuyển đổi  ngôn ngữ")
+                        .font(.system(size: 20))
+                        .fontWeight(.semibold)
+                    Spacer()
+                    Image(systemName: "chevron.right")
+                }
+            }
+            .padding()
+            .background(.white)
+            .cornerRadius(20)
+            .shadow(color: .black.opacity(0.2), radius: 8, x: 0, y: 0)
+        }
+        .frame(maxHeight: .infinity, alignment: .top)
+        .padding()
+        .background(Color("Background"))
+        .navigationTitle("Setting")
+        .navigationBarTitleDisplayMode(.inline)
     }
 }
 
 struct SettingView_Previews: PreviewProvider {
     static var previews: some View {
-        SettingView()
+        NavigationView {
+            SettingView()
+        }
     }
 }

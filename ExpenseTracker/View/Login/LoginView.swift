@@ -37,7 +37,7 @@ struct LoginView: View {
                         .frame(height: 60)
                     
                     VStack(spacing: 16) {
-                        TextField("Username", text: $viewModel.username)
+                        TextField("Username", text: $viewModel.email)
                             .font(.system(size: 25))
                             .autocorrectionDisabled()
                             .autocapitalization(.none)

@@ -6,9 +6,16 @@
 //
 
 import Foundation
+import FirebaseAuth
 
 class MainViewViewModel: ObservableObject {
-    init() {}
+    init() {
+        self.handler = Auth.auth().addStateDidChangeListener({[weak self] _, user in
+            DispatchQueue.main.async {
+                self?.currentUser = user?.uid ?? ""
+            }
+        })
+    }
     
     @Published var selectedTab = 0
     @Published var showAddBudget = false
@@ -16,8 +23,13 @@ class MainViewViewModel: ObservableObject {
     @Published var showAddDream = false
     @Published var showSetting = false
     
+    @Published var currentUser = ""
+    private var handler: AuthStateDidChangeListenerHandle?
     
-    func isLogin() -> Bool {
-        return true
+    
+    
+    
+    public var isLogin: Bool {
+        return Auth.auth().currentUser != nil
     }
 }

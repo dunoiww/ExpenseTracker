@@ -6,10 +6,11 @@
 //
 
 import Foundation
+import FirebaseAuth
 
-struct User: Codable, Identifiable {
-    var id: UUID
-    let username: String
+struct User: Codable {
+    let id: String
+    let name: String
     let email: String
-    let avatarURL: String
+    let photoUrl: String
 }

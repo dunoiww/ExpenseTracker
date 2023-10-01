@@ -10,7 +10,7 @@ import SwiftUI
 struct ContentView: View {
     @StateObject var viewModel = MainViewViewModel()
     var body: some View {
-        if viewModel.isLogin() {
+        if viewModel.isLogin, !viewModel.currentUser.isEmpty {
             mainView()
         } else {
             LoginView()

@@ -15,10 +15,30 @@ class RegisterViewViewModel: ObservableObject {
     init() {}
     
     func createAccount() {
+        guard validate() else {
+            return
+        }
         
+        AuthenticationManager.shared.Register(name: username, email: email, password: password, photoUrl: "")
+        
+        print("ngo nam")
     }
     
-    func storeAccount() {
+    private func validate() -> Bool {
+        guard !username.trimmingCharacters(in: .whitespaces).isEmpty,
+              !email.trimmingCharacters(in: .whitespaces).isEmpty,
+              !password.trimmingCharacters(in: .whitespaces).isEmpty else {
+            return false
+        }
         
+        guard email.contains("@") && email.contains(".") else {
+            return false
+        }
+        
+        guard password.count >= 6 else {
+            return false
+        }
+        
+        return true
     }
 }
