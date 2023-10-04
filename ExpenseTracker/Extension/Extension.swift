@@ -23,3 +23,12 @@ extension String {
         return parsedDate
     }
 }
+
+
+enum NetworkingError: Error {
+    case connectionLost
+    case serverError
+    case invalidResponse
+}
+
+let vietnameseLocale: Locale = Locale(identifier: "vi_VN")

@@ -29,21 +29,21 @@ struct HomeView: View {
                             
                             HStack {
                                 VStack {
-                                    Text("Income")
+                                    Text("Thu nhập")
                                         .foregroundColor(.green)
                                         .fontWeight(.bold)
                                     
-                                    Text("+$1000")
+                                    Text("+đ1000")
                                         .foregroundColor(.green)
                                 }
                                 
                                 Spacer()
                                 
                                 VStack {
-                                    Text("Expense")
+                                    Text("Chi tiêu")
                                         .foregroundColor(.red)
                                         .fontWeight(.bold)
-                                    Text("-$2000")
+                                    Text("-đ2000")
                                         .foregroundColor(.red)
                                 }
                             }
@@ -51,7 +51,7 @@ struct HomeView: View {
                         }
                     }
                     .data(demoData)
-                    .chartStyle(ChartStyle(backgroundColor: Color("systemBackground"), foregroundColor: ColorGradient(Color("Chart").opacity(0.4), Color("Chart"))))
+                    .chartStyle(ChartStyle(backgroundColor: Color.white, foregroundColor: ColorGradient(Color("Chart").opacity(0.4), Color("Chart"))))
                     .frame(height: 250)
                     
                     RecentTransactionList()
@@ -74,7 +74,7 @@ struct HomeView: View {
                 }
                 
                 ToolbarItem(placement: .navigationBarLeading) {
-                    Text("Overview")
+                    Text("Tổng quan")
                         .foregroundColor(.black)
                         .font(.system(size: 30))
                         .bold()

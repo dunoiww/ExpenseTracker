@@ -68,7 +68,7 @@ struct TransactionRow: View {
                 }
             }
             .padding([.leading, .trailing], 10)
-            .padding([.top, .bottom], 2)
+            .padding([.top, .bottom], 1)
         }
     }
 }

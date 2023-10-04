@@ -64,7 +64,7 @@ struct LoginView: View {
                         .padding()
                     
                     VStack {
-                        NavigationLink("Forgotten Password?", destination: RegisterView())
+                        NavigationLink("Forgotten Password?", destination: ForgetPasswordView())
                             .foregroundColor(.secondary)
                         NavigationLink("Or Create a New Account", destination: RegisterView())
                             .foregroundColor(.secondary)

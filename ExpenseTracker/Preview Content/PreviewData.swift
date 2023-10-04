@@ -8,7 +8,7 @@
 import Foundation
 import SwiftUI
 
-var transactionPreviewData = Transaction(id: UUID(), title: "Buy house", amount: 100000, note: "Buy house for my parents", date: "15/09/2030", type: "Expense", category: "Home", categoryId: 801)
+var transactionPreviewData = Transaction(id: UUID(), title: "Mua nhà", amount: 100000, note: "mua nhà mua nhà mua nhà mua nhà", date: "15/09/2023", type: "Expense", category: "Nhà", categoryId: 801)
 
 var transactionListPreviewData = [Transaction](repeating: transactionPreviewData, count: 10)
 

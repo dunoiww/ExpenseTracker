@@ -20,8 +20,6 @@ class RegisterViewViewModel: ObservableObject {
         }
         
         AuthenticationManager.shared.Register(name: username, email: email, password: password, photoUrl: "")
-        
-        print("ngo nam")
     }
     
     private func validate() -> Bool {

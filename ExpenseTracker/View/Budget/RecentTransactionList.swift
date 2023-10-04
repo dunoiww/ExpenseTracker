@@ -12,7 +12,7 @@ struct RecentTransactionList: View {
     var body: some View {
         VStack {
             HStack {
-                Text("Transaction")
+                Text("Giao dịch")
                     .foregroundColor(.black)
                     .font(.title)
                     .fontWeight(.medium)
@@ -20,10 +20,10 @@ struct RecentTransactionList: View {
                 Spacer()
                 
                 NavigationLink {
-                    
+                    SeeAllView()
                 } label: {
                     HStack {
-                        Text("See All")
+                        Text("Tất cả")
                         Image(systemName: "chevron.forward")
                     }
                     .foregroundColor(Color.blue)

@@ -34,8 +34,8 @@ final class AuthenticationManager {
         Auth.auth().signIn(withEmail: email, password: password)
     }
     
-    func forgetPassword(email: String) {
-        Auth.auth().sendPasswordReset(withEmail: email)
+    func forgetPassword(email: String) async throws {
+        try await Auth.auth().sendPasswordReset(withEmail: email)
     }
     
     func logout() {
@@ -45,4 +45,26 @@ final class AuthenticationManager {
             print(error.localizedDescription)
         }
     }
+    
+    func fetchUserData(userId: String) async throws -> User {
+        let db = Firestore.firestore()
+        
+        do {
+            let document = try await db.collection("users").document(userId).getDocument()
+            guard let data = document.data() else {
+                throw NetworkingError.serverError
+            }
+            
+            let user = User(id: data["id"] as? String ?? "",
+                            name: data["name"] as? String ?? "",
+                            email: data["email"] as? String ?? "",
+                            photoUrl: data["photoUrl"] as? String ?? "")
+            
+            return user
+        } catch {
+            throw error
+        }
+    }
+    
 }
+

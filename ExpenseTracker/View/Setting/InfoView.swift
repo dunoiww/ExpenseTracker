@@ -14,167 +14,178 @@ struct InfoView: View {
         NavigationView {
             ScrollView {
                 VStack {
-                    Image(systemName: "person.circle")
-                        .resizable()
-                        .scaledToFit()
-                        .foregroundColor(.blue)
-                        .frame(width: 128, height: 128)
-                }
-                VStack {
                     VStack {
-                        Text("Profile")
-                            .font(.system(size: 24))
-                            .fontWeight(.bold)
-                            .frame(maxWidth: .infinity, alignment: .leading)
-                            .padding(.horizontal)
-                            .offset(x: 15, y: 15)
-                        
-                        CardView {
-                            VStack {
-                                HStack {
-                                    Text("Name: ")
-                                        .font(.system(size: 20))
-                                        .fontWeight(.semibold)
-                                    Spacer()
-                                    Text("Ngo nam")
-                                        .font(.system(size: 20))
-                                }
-                                
-                                Divider()
-                                
-                                HStack {
-                                    Text("Email: ")
-                                        .font(.system(size: 20))
-                                        .fontWeight(.semibold)
-                                    Spacer()
-                                    Text("namngo102003@gmail.com")
-                                        .font(.system(size: 20))
-                                }
-                            }
-                            .padding()
-                        }
-                        .padding()
-                        
-                        
+                        Image(systemName: "person.circle")
+                            .resizable()
+                            .scaledToFit()
+                            .foregroundColor(.blue)
+                            .frame(width: 128, height: 128)
                     }
                     VStack {
-                        Text("Data")
-                            .font(.system(size: 24))
-                            .fontWeight(.bold)
-                            .frame(maxWidth: .infinity, alignment: .leading)
-                            .padding(.horizontal)
-                            .offset(x: 15, y: 15)
-                        
-                        CardView {
-                            VStack {
-                                HStack {
-                                    Text("Statistic")
-                                        .font(.system(size: 20))
-                                        .fontWeight(.semibold)
-                                }
-                                .frame(maxWidth: .infinity, alignment: .leading)
+                        if let user = viewModel.user {
+                            info(user: user)
+                        } else {
+                            HStack {
+                                Text("Đang tải dữ liệu người dùng...")
+                                    .font(.system(size: 24))
+                                    .fontWeight(.bold)
+                                    .frame(maxWidth: .infinity, alignment: .leading)
+                                    .padding(.horizontal)
                                 
-                                Divider()
-                                
-                                HStack {
-                                    Text("Search")
-                                        .font(.system(size: 20))
-                                        .fontWeight(.semibold)
-                                }
-                                .frame(maxWidth: .infinity, alignment: .leading)
-                                
-                                Divider()
-                                
-                                HStack {
-                                    Text("Export data")
-                                        .font(.system(size: 20))
-                                        .fontWeight(.semibold)
-                                }
-                                .frame(maxWidth: .infinity, alignment: .leading)
+                                ProgressView()
                             }
-                            .padding()
                         }
-                        .padding()
                         
+                        //MARK: Data section
                         
-                    }
-                    VStack {
-                        Text("More info")
-                            .font(.system(size: 24))
-                            .fontWeight(.bold)
-                            .frame(maxWidth: .infinity, alignment: .leading)
-                            .padding(.horizontal)
-                            .offset(x: 15, y: 15)
-                        
-                        CardView {
-                            VStack {
-                                NavigationLink {
+                        VStack {
+                            Text("Dữ liệu")
+                                .font(.system(size: 15))
+                                .fontWeight(.thin)
+                                .frame(maxWidth: .infinity, alignment: .leading)
+                                .padding(.horizontal)
+                                .offset(x: 15, y: 25)
+                            
+                            CardView {
+                                VStack {
+                                    NavigationLink {
+                                        
+                                    } label: {
+                                        HStack {
+                                            Text("Thống kê")
+                                                .font(.system(size: 20))
+                                                .fontWeight(.semibold)
+                                            
+                                            Spacer()
+                                            
+                                            Image(systemName: "chevron.right")
+                                        }
+                                        .foregroundColor(.primary)
+                                    }
+                                    .frame(maxWidth: .infinity, alignment: .leading)
                                     
-                                } label: {
-                                    HStack {
-                                        Text("Help")
-                                            .font(.system(size: 20))
-                                            .fontWeight(.semibold)
-                                    }
-                                    .foregroundColor(.primary)
-                                }
-                                
-                                .frame(maxWidth: .infinity, alignment: .leading)
-                                
-                                Divider()
-                                
-                                NavigationLink {
+                                    Divider()
                                     
-                                } label: {
+                                    NavigationLink {
+                                        
+                                    } label: {
+                                        HStack {
+                                            Text("Tìm kiếm")
+                                                .font(.system(size: 20))
+                                                .fontWeight(.semibold)
+                                            
+                                            Spacer()
+                                            
+                                            Image(systemName: "chevron.right")
+                                        }
+                                        .foregroundColor(.primary)
+                                    }
+                                    .frame(maxWidth: .infinity, alignment: .leading)
+                                    
+                                    Divider()
+                                    
                                     HStack {
-                                        Text("About")
+                                        Text("Xuất dữ liệu")
                                             .font(.system(size: 20))
                                             .fontWeight(.semibold)
-                                        
-                                        Spacer()
-                                        
-                                        Image(systemName: "chevron.right")
                                     }
-                                    .foregroundColor(.primary)
+                                    .frame(maxWidth: .infinity, alignment: .leading)
                                 }
-                                .frame(maxWidth: .infinity, alignment: .leading)
-                                
-                                Divider()
-                                
-                                NavigationLink {
-                                    SettingView()
-                                } label: {
-                                    HStack {
-                                        Text("Setting")
-                                            .font(.system(size: 20))
-                                            .fontWeight(.semibold)
-                                        
-                                        Spacer()
-                                        
-                                        Image(systemName: "chevron.right")
-                                    }
-                                    .foregroundColor(.primary)
-                                }
-                                .frame(maxWidth: .infinity, alignment: .leading)
+                                .padding()
                             }
                             .padding()
+                            
+                            
                         }
-                        .padding()
+                        
+                        //MARK: Info section
+                        
+                        VStack {
+                            Text("Thông tin khác")
+                                .font(.system(size: 15))
+                                .fontWeight(.thin)
+                                .frame(maxWidth: .infinity, alignment: .leading)
+                                .padding(.horizontal)
+                                .offset(x: 15, y: 25)
+                            
+                            CardView {
+                                VStack {
+                                    NavigationLink {
+                                        
+                                    } label: {
+                                        HStack {
+                                            Text("Trợ giúp")
+                                                .font(.system(size: 20))
+                                                .fontWeight(.semibold)
+                                        }
+                                        .foregroundColor(.primary)
+                                    }
+                                    
+                                    .frame(maxWidth: .infinity, alignment: .leading)
+                                    
+                                    Divider()
+                                    
+                                    NavigationLink {
+                                        
+                                    } label: {
+                                        HStack {
+                                            Text("Về chúng tôi")
+                                                .font(.system(size: 20))
+                                                .fontWeight(.semibold)
+                                            
+                                            Spacer()
+                                            
+                                            Image(systemName: "chevron.right")
+                                        }
+                                        .foregroundColor(.primary)
+                                    }
+                                    .frame(maxWidth: .infinity, alignment: .leading)
+                                    
+                                    Divider()
+                                    
+                                    NavigationLink {
+                                        SettingView()
+                                    } label: {
+                                        HStack {
+                                            Text("Cài đặt")
+                                                .font(.system(size: 20))
+                                                .fontWeight(.semibold)
+                                            
+                                            Spacer()
+                                            
+                                            Image(systemName: "chevron.right")
+                                        }
+                                        .foregroundColor(.primary)
+                                    }
+                                    .frame(maxWidth: .infinity, alignment: .leading)
+                                }
+                                .padding()
+                            }
+                            .padding()
+                            
+                        }
+                        
+                        //MARK: Button logout
+                        
+                        ButtonLog(title: "Đăng xuất") {
+                            viewModel.showAlert.toggle()
+                        }
+                        
+                        RoundedRectangle(cornerRadius: 20)
+                            .frame(height: 50)
+                            .foregroundColor(Color("Background"))
+                        
                         
                     }
-                    
-                    ButtonLog(title: "Log out") {
-                        viewModel.logout()
-                    }
-                    
-                    RoundedRectangle(cornerRadius: 20)
-                        .frame(height: 50)
-                        .foregroundColor(Color("Background"))
-                    
-                    
                 }
-                .frame(maxWidth: .infinity, maxHeight: .infinity)
-                .background(Color("Background"))
+                .task {
+                    do {
+                        try await viewModel.fetchUser()
+                    } catch {
+                        print(error.localizedDescription)
+                    }
+                }
+                
                 .toolbar {
                     ToolbarItem {
                         Image(systemName: "bell.badge")
@@ -183,16 +194,71 @@ struct InfoView: View {
                     }
                     
                     ToolbarItem(placement: .navigationBarLeading) {
-                        Text("Info")
+                        Text("Thông tin")
                             .foregroundColor(.black)
                             .font(.system(size: 30))
                             .bold()
                     }
                 }
+                
+                .alert(isPresented: $viewModel.showAlert) {
+                    Alert(
+                        title: Text("Bạn muốn thoát ứng dụng?"),
+                        primaryButton: .default (
+                            Text("Huỷ")
+                        ),
+                        secondaryButton: .destructive(
+                            Text("Thoát"),
+                            action: viewModel.logout
+                        )
+                    )
+                }
             }
+            .background(Color("Background"))
         }
         
-       
+        
+    }
+    
+    //MARK: user data
+    @ViewBuilder
+    func info(user: User) -> some View {
+        VStack {
+            Text("Profile")
+                .font(.system(size: 15))
+                .fontWeight(.thin)
+                .frame(maxWidth: .infinity, alignment: .leading)
+                .padding(.horizontal)
+                .offset(x: 15, y: 25)
+            
+            CardView {
+                VStack {
+                    HStack {
+                        Text("Name: ")
+                            .font(.system(size: 20))
+                            .fontWeight(.semibold)
+                        Spacer()
+                        Text(user.name)
+                            .font(.system(size: 20))
+                    }
+                    
+                    Divider()
+                    
+                    HStack {
+                        Text("Email: ")
+                            .font(.system(size: 20))
+                            .fontWeight(.semibold)
+                        Spacer()
+                        Text(user.email)
+                            .font(.system(size: 20))
+                    }
+                }
+                .padding()
+            }
+            .padding()
+            
+            
+        }
     }
 }
 

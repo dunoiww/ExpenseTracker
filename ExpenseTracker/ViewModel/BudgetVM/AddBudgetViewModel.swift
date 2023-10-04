@@ -13,9 +13,12 @@ class AddBudgetViewModel: ObservableObject {
     @Published var selectedDate = Date()
     @Published var note = ""
     @Published var amount = 0.0
+    @Published var type = TransactionType.expense
+    @Published var category = ""
     @Published var tabName: TransactionType = .expense
+    @Published var isChoose: Category? = nil
     
     func save() {
-        
+        print(isChoose?.name ?? "nam")
     }
 }
