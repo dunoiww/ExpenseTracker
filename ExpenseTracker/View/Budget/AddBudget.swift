@@ -38,8 +38,14 @@ struct AddBudget: View {
                 Spacer()
                 
                 ButtonAdd(title: "Lưu") {
-                    viewModel.save()
-                    dismiss()
+                    Task {
+                        do {
+                            try await viewModel.save()
+                            dismiss()
+                        } catch {
+                            print(error.localizedDescription)
+                        }
+                    }
                 }
                 
             }
@@ -71,9 +77,24 @@ struct AddBudget: View {
         }
     }
     
+    //MARK: detail of add
     @ViewBuilder
     func addTransaction(type: String) -> some View {
         VStack {
+            HStack(spacing: 20) {
+                Text("Tiêu đề")
+                    .font(.title2)
+                    .bold().opacity(0.7)
+                    .padding(.trailing, 20)
+                    .frame(width: 100, alignment: .leading)
+                TextField("tiêu đề", text: $viewModel.title)
+                    .font(.system(size: 20))
+                    .textFieldStyle(DefaultTextFieldStyle())
+                    .autocorrectionDisabled()
+                    .padding()
+            }
+            .padding(.leading, 16)
+            
             HStack {
                 DatePicker("Ngày", selection: $viewModel.selectedDate, displayedComponents: .date)
                     .font(.title2)
@@ -103,7 +124,9 @@ struct AddBudget: View {
                     .bold().opacity(0.7)
                     .padding(.trailing, 15)
                     .frame(width: 110, alignment: .leading)
-                TextField("Giá trị", value: $viewModel.amount, format: .currency(code: "VND"))
+//                TextField("Giá trị", value: $viewModel.amount, format: .currency(code: "VND"))
+                
+                TextField("Giá trị", value: $viewModel.amount, format: .number)
                     .font(.system(size: 20))
             }
             .padding(.leading, 16)
@@ -136,6 +159,8 @@ struct AddBudget: View {
                             RoundedRectangle(cornerRadius: 10)
                                 .stroke(viewModel.isChoose == category ? .red : Color.black, lineWidth: 1)
                         )
+                        .background(viewModel.isChoose == category ? .yellow.opacity(0.4) : .yellow.opacity(0))
+                        .cornerRadius(10)
                     }
                 }
             }

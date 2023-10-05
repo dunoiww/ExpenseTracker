@@ -19,6 +19,10 @@ class LoginViewViewModel: ObservableObject {
         guard validate() else { return }
         
         AuthenticationManager.shared.login(email: email, password: password)
+        
+        if Auth.auth().currentUser == nil {
+            msg = "Sai thông tin tài khoản hoặc mật khẩu!"
+        }
     }
     
     private func validate() -> Bool {
@@ -27,13 +31,13 @@ class LoginViewViewModel: ObservableObject {
         guard !email.trimmingCharacters(in: .whitespaces).isEmpty,
               !password.trimmingCharacters(in: .whitespaces).isEmpty else {
             
-            msg = "Hãy điền đầy đủ thông tin."
+            msg = "Hãy điền đầy đủ thông tin!"
             
             return false
         }
         
         guard email.contains("@") && email.contains(".com") else {
-            msg = "Email không hợp lệ."
+            msg = "Email không hợp lệ!"
             return false
         }
         

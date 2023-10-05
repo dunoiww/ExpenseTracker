@@ -8,8 +8,8 @@
 import Foundation
 import SwiftUIFontIcon
 
-struct Transaction: Identifiable {
-    var id: UUID
+struct Transaction: Identifiable, Codable {
+    var id: String
     var title: String
     var amount: Double
     var note: String

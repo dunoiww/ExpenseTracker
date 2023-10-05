@@ -8,10 +8,18 @@
 import Foundation
 import SwiftUI
 
-var transactionPreviewData = Transaction(id: UUID(), title: "Mua nhà", amount: 100000, note: "mua nhà mua nhà mua nhà mua nhà", date: "15/09/2023", type: "Expense", category: "Nhà", categoryId: 801)
+var transactionPreviewData = Transaction(id: "9", title: "Mua nhà", amount: 100000, note: "mua nhà mua nhà mua nhà mua nhà", date: "15/09/2023", type: "Income", category: "Nhà", categoryId: 801)
 
-var transactionListPreviewData = [Transaction](repeating: transactionPreviewData, count: 10)
-
+var transactionListPreviewData = [
+    Transaction(id: "1", title: "Mua nhà", amount: 100000, note: "mua nhà mua nhà mua nhà mua nhà", date: "15/09/2023", type: "Expense", category: "Nhà", categoryId: 801),
+    Transaction(id: "2", title: "Mua nhà", amount: 100000, note: "mua nhà mua nhà mua nhà mua nhà", date: "15/09/2023", type: "Expense", category: "Nhà", categoryId: 801),
+    Transaction(id: "3", title: "Mua nhà", amount: 100000, note: "mua nhà mua nhà mua nhà mua nhà", date: "15/09/2023", type: "Expense", category: "Nhà", categoryId: 801),
+    Transaction(id: "4", title: "Mua nhà", amount: 100000, note: "mua nhà mua nhà mua nhà mua nhà", date: "15/09/2023", type: "Expense", category: "Nhà", categoryId: 801),
+    Transaction(id: "5", title: "Mua nhà", amount: 100000, note: "mua nhà mua nhà mua nhà mua nhà", date: "15/09/2023", type: "Expense", category: "Nhà", categoryId: 801),
+    Transaction(id: "6", title: "Mua nhà", amount: 100000, note: "mua nhà mua nhà mua nhà mua nhà", date: "15/09/2023", type: "Expense", category: "Nhà", categoryId: 801),
+    Transaction(id: "7", title: "Mua nhà", amount: 100000, note: "mua nhà mua nhà mua nhà mua nhà", date: "15/09/2023", type: "Expense", category: "Nhà", categoryId: 801),
+    Transaction(id: "8", title: "Mua nhà", amount: 100000, note: "mua nhà mua nhà mua nhà mua nhà", date: "15/09/2023", type: "Expense", category: "Nhà", categoryId: 801)
+]
 var creditcardPreviewData = CreditCard(id: 5, bank: "MB", name: "Ngo Nam", numID: "123456789", amount: 10000000, qrImage: "xyz")
 
 var creditcardListPreviewData = [CreditCard](repeating: creditcardPreviewData, count: 10)

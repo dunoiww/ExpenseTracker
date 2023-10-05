@@ -6,9 +6,11 @@
 //
 
 import Foundation
+import FirebaseFirestoreSwift
+import FirebaseAuth
 
 class RecentTransactionListViewModel: ObservableObject {
     init() {}
     
-    var transaction = transactionListPreviewData
+    var userId = Auth.auth().currentUser?.uid
 }

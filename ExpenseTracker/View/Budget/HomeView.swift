@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import FirebaseFirestoreSwift
 import SwiftUICharts
 
 struct HomeView: View {
@@ -54,7 +55,7 @@ struct HomeView: View {
                     .chartStyle(ChartStyle(backgroundColor: Color.white, foregroundColor: ColorGradient(Color("Chart").opacity(0.4), Color("Chart"))))
                     .frame(height: 250)
                     
-                    RecentTransactionList()
+                    RecentTransactionList(userId: viewModel.userId ?? "rjAHDPqtNpTzMQ7UK5acmnRrOAH3")
                     
                     RoundedRectangle(cornerRadius: 20)
                         .frame(height: 50)

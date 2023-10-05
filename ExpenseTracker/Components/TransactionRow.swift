@@ -58,9 +58,9 @@ struct TransactionRow: View {
                 
                 VStack(alignment: .trailing) {
                     Text(transaction.signedAmount, format: .currency(code: "VND"))
-                        .font(.subheadline)
+                        .font(.headline)
                         .bold()
-                        .foregroundColor(.primary)
+                        .foregroundColor(transaction.signedAmount > 0 ? Color("amountGreen") : .red)
                     
                     Text(DateFormatter.vietnameseDateFormat.string(from: transaction.dateParsed))
                         .font(.footnote)

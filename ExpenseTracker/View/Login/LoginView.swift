@@ -37,7 +37,15 @@ struct LoginView: View {
                         .frame(height: 60)
                     
                     VStack(spacing: 16) {
-                        TextField("Username", text: $viewModel.email)
+                        if viewModel.msg != "" {
+                            Text(viewModel.msg)
+                                .frame(maxWidth: .infinity, alignment: .leading)
+                                .foregroundColor(.red)
+                                .font(.headline)
+                                .italic()
+                        }
+                        
+                        TextField("Email", text: $viewModel.email)
                             .font(.system(size: 25))
                             .autocorrectionDisabled()
                             .autocapitalization(.none)

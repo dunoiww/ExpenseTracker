@@ -6,9 +6,13 @@
 //
 
 import Foundation
+import FirebaseAuth
 
 class HomeViewViewModel: ObservableObject {
     init() {}
     
     @Published var selectedTab = 0
+    
+    var userId = Auth.auth().currentUser?.uid
+    
 }

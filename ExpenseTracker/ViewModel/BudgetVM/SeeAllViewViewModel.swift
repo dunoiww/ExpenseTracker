@@ -11,9 +11,9 @@ typealias TransactionGroup = [String : [Transaction]]
 class SeeAllViewViewModel: ObservableObject {
     init() {}
     
-    @Published var transactions: [Transaction] = transactionListPreviewData
+//    @Published var transactions: [Transaction] = transactionListPreviewData
     
-    func groupTransactionByMonth() -> TransactionGroup {
+    func groupTransactionByMonth(transactions: [Transaction]) -> TransactionGroup {
         guard !transactions.isEmpty else {
             return [:]
         }

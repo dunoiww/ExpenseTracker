@@ -6,9 +6,16 @@
 //
 
 import SwiftUI
+import FirebaseFirestoreSwift
 
 struct RecentTransactionList: View {
     @StateObject var viewModel = RecentTransactionListViewModel()
+    @FirestoreQuery var transaction: [Transaction]
+    
+    init(userId: String) {
+        self._transaction = FirestoreQuery(collectionPath: "users/\(userId)/transactions", predicates: [.order(by: "date", descending: true)])
+    }
+    
     var body: some View {
         VStack {
             HStack {
@@ -20,7 +27,7 @@ struct RecentTransactionList: View {
                 Spacer()
                 
                 NavigationLink {
-                    SeeAllView()
+                    SeeAllView(userId: viewModel.userId ?? "rjAHDPqtNpTzMQ7UK5acmnRrOAH3")
                 } label: {
                     HStack {
                         Text("Tất cả")
@@ -33,7 +40,7 @@ struct RecentTransactionList: View {
             
             
             //MARK: Recent transaction list
-            ForEach(viewModel.transaction.prefix(5)) { transaction in
+            ForEach(transaction.prefix(5)) { transaction in
                 TransactionRow(transaction: transaction)
                 
             }
@@ -48,6 +55,6 @@ struct RecentTransactionList: View {
 
 struct RecentTransactionList_Previews: PreviewProvider {
     static var previews: some View {
-        RecentTransactionList()
+        RecentTransactionList(userId: "rjAHDPqtNpTzMQ7UK5acmnRrOAH3")
     }
 }
