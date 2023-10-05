@@ -38,18 +38,18 @@ struct TransactionRow: View {
                 
                 VStack(alignment: .leading, spacing: 6) {
                     Text(transaction.title)
-                        .font(.subheadline)
-                        .bold()
+                        .font(.title3)
+                        .fontWeight(.semibold)
                         .foregroundColor(.black)
                         .lineLimit(1)
                     
                     Text(transaction.note)
-                        .font(.system(size: 11))
+                        .font(.system(size: 12))
                         .opacity(0.7)
                         .lineLimit(1)
                     
                     Text(transaction.category)
-                        .font(.system(size: 11))
+                        .font(.system(size: 12))
                         .opacity(0.7)
                         .lineLimit(1)
                 }

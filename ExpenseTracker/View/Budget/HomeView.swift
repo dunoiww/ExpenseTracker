@@ -18,42 +18,50 @@ struct HomeView: View {
         NavigationView {
             ScrollView {
                 VStack(alignment: .leading, spacing: 24) {
-//                    Text("Overview")
-//                        .foregroundColor(.black)
-//                        .font(.title2)
-//                        .bold()
-                    
-                    CardView {
-                        VStack {
-                            ChartLabel("100000vnd", type: .title)
-                            LineChart()
-                            
-                            HStack {
-                                VStack {
-                                    Text("Thu nhập")
-                                        .foregroundColor(.green)
-                                        .fontWeight(.bold)
-                                    
-                                    Text("+đ1000")
-                                        .foregroundColor(.green)
-                                }
+                    if !viewModel.data.isEmpty {
+                        let total = viewModel.data.last?.1 ?? 0
+                        CardView {
+                            VStack(alignment: .leading) {
+                                ChartLabel(total.formatted(.currency(code: "VND")), type: .title, format: "%.0f₫")
+                                LineChart()
                                 
-                                Spacer()
-                                
-                                VStack {
-                                    Text("Chi tiêu")
-                                        .foregroundColor(.red)
-                                        .fontWeight(.bold)
-                                    Text("-đ2000")
-                                        .foregroundColor(.red)
-                                }
+//                                HStack {
+//                                    VStack {
+//                                        Text("Thu nhập")
+//                                            .foregroundColor(.green)
+//                                            .fontWeight(.bold)
+//                                        
+//                                        Text("+đ1000")
+//                                            .foregroundColor(.green)
+//                                    }
+//                                    
+//                                    Spacer()
+//                                    
+//                                    VStack {
+//                                        Text("Chi tiêu")
+//                                            .foregroundColor(.red)
+//                                            .fontWeight(.bold)
+//                                        Text("-đ2000")
+//                                            .foregroundColor(.red)
+//                                    }
+//                                }
+//                                .padding(.horizontal, 50)
                             }
-                            .padding(.horizontal, 50)
                         }
+                        .data(viewModel.data)
+//                        .data(demoData)
+                        .chartStyle(ChartStyle(backgroundColor: Color.white, foregroundColor: ColorGradient(Color("Chart").opacity(0.4), Color("Chart"))))
+                        .frame(height: 250)
+                    } else {
+                        CardView {
+                            HStack {
+                                ProgressView()
+                                    .padding(.trailing, 20)
+                                Text("Đang load dữ liệu...")
+                            }
+                        }
+                        .frame(height: 250)
                     }
-                    .data(demoData)
-                    .chartStyle(ChartStyle(backgroundColor: Color.white, foregroundColor: ColorGradient(Color("Chart").opacity(0.4), Color("Chart"))))
-                    .frame(height: 250)
                     
                     RecentTransactionList(userId: viewModel.userId ?? "rjAHDPqtNpTzMQ7UK5acmnRrOAH3")
                     
@@ -79,6 +87,16 @@ struct HomeView: View {
                         .foregroundColor(.black)
                         .font(.system(size: 30))
                         .bold()
+                }
+            }
+            .task {
+                do {
+                    viewModel.data = try await viewModel.accumulateTransactions()
+                    //                    DispatchQueue.main.async {
+                    //                        viewModel.total = viewModel.data.last?.1 ?? 0
+                    //                    }
+                } catch {
+                    print(error)
                 }
             }
         }
