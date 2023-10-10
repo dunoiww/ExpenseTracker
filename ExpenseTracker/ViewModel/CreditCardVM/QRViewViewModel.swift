@@ -10,8 +10,5 @@ import SwiftUI
 
 class QRViewViewModel: ObservableObject {
     
-    var creditList = creditListPreviewData
-    @Published var qrSelected = 1
-    @Published var image: UIImage?
-    @Published var showPhotoLibrary = false
+    @Published var qrSelected = ""
 }

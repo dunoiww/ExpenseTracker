@@ -28,34 +28,6 @@ class TransactionManager {
         
     }
     
-//    func fetchTransactionData(userId: String) async throws -> [Transaction] {
-//        let db = Firestore.firestore()
-//        var transactions: [Transaction] = []
-//        
-//        db.collection("users").document(userId).collection("transactions").getDocuments() { (snapshot, err) in
-//            do {
-//                if let err = err {
-//                    throw err
-//                } else {
-//                    for document in snapshot!.documents {
-//                        let transaction = Transaction(id: document["id"] as? String ?? "",
-//                                                      title: document["title"] as? String ?? "",
-//                                                      amount: document["amount"] as? Double ?? 0.0,
-//                                                      note: document["note"] as? String ?? "",
-//                                                      date: document["date"] as? String ?? "",
-//                                                      type: document["type"] as? TransactionType.RawValue ?? "",
-//                                                      category: document["category"] as? String ?? "",
-//                                                      categoryId: document["categoryId"] as? Int ?? 0)
-//                        
-//                        transactions.append(transaction)
-//                    }
-//                }
-//            } catch {
-//                print(err ?? "ngu")
-//            }
-//        }
-//    }
-    
     func fetchTransactionData(userId: String) async throws -> [Transaction] {
         let db = Firestore.firestore()
         var transactions: [Transaction] = []

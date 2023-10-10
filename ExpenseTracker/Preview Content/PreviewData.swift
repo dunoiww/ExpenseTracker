@@ -20,18 +20,18 @@ var transactionListPreviewData = [
     Transaction(id: "7", title: "Mua nhà", amount: 100000, note: "mua nhà mua nhà mua nhà mua nhà", date: "15/09/2023", type: "Expense", category: "Nhà", categoryId: 801),
     Transaction(id: "8", title: "Mua nhà", amount: 100000, note: "mua nhà mua nhà mua nhà mua nhà", date: "15/09/2023", type: "Expense", category: "Nhà", categoryId: 801)
 ]
-var creditcardPreviewData = CreditCard(id: 5, bank: "MB", name: "Ngo Nam", numID: "123456789", amount: 10000000, qrImage: "xyz")
+var creditcardPreviewData = CreditCard(id: "5", bank: "MB", name: "Ngo Nam", numID: "123456789", amount: 10000000, qrImage: "xyz")
 
 var creditcardListPreviewData = [CreditCard](repeating: creditcardPreviewData, count: 10)
 
 
 var creditListPreviewData = [
-    CreditCard(id: 1, bank: "MB", name: "Ngo Nam", numID: "123", amount: 1000, qrImage: "xyc"),
-    CreditCard(id: 2, bank: "BIDV", name: "Ngo Nam", numID: "123", amount: 1000, qrImage: "xyc"),
-    CreditCard(id: 3, bank: "TP Bank", name: "Ngo Nam", numID: "123", amount: 1000, qrImage: "xyc"),
-    CreditCard(id: 4, bank: "Agribank", name: "Ngo Nam", numID: "123", amount: 1000, qrImage: "xyc"),
-    CreditCard(id: 5, bank: "HDBank", name: "Ngo Nam", numID: "123", amount: 1000, qrImage: "xyc"),
-    CreditCard(id: 6, bank: "OCBank", name: "Ngo Nam", numID: "123", amount: 1000, qrImage: "xyc")
+    CreditCard(id: "1", bank: "MB", name: "Ngo Nam", numID: "123", amount: 1000, qrImage: "xyc"),
+    CreditCard(id: "2", bank: "BIDV", name: "Ngo Nam", numID: "123", amount: 1000, qrImage: "xyc"),
+    CreditCard(id: "3", bank: "TPBank", name: "Ngo Nam", numID: "123", amount: 1000, qrImage: "xyc"),
+    CreditCard(id: "4", bank: "Agribank", name: "Ngo Nam", numID: "123", amount: 1000, qrImage: "xyc"),
+    CreditCard(id: "5", bank: "HDBank", name: "Ngo Nam", numID: "123", amount: 1000, qrImage: "xyc"),
+    CreditCard(id: "6", bank: "OCBank", name: "Ngo Nam", numID: "123", amount: 1000, qrImage: "xyc")
 ]
 
 var dreamGoalPreviewData = DreamGoal(id: UUID(), dream: "Buy House", currentMoney: 1234567, expectedMoney: 10000000, dateStart: "15/09/2023", dateExpected: "20/09/2023")

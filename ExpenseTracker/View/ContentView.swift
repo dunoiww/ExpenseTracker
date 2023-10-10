@@ -25,7 +25,7 @@ struct ContentView: View {
                 HomeView()
             }
             else if viewModel.selectedTab == 1 {
-                QRView()
+                QRView(userId: "rjAHDPqtNpTzMQ7UK5acmnRrOAH3")
             }
             else if viewModel.selectedTab == 2 {
                 DreamView()

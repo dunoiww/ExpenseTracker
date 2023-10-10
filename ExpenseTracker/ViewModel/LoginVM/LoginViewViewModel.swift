@@ -9,18 +9,27 @@ import Foundation
 import FirebaseAuth
 
 class LoginViewViewModel: ObservableObject {
-    init() {}
+    init() {
+        self.handler = Auth.auth().addStateDidChangeListener({[weak self] _, user in
+            DispatchQueue.main.async {
+                self?.currentUser = user?.uid ?? ""
+            }
+        })
+    }
     
     @Published var email = ""
     @Published var password = ""
     @Published var msg = ""
+    
+    @Published var currentUser = ""
+    private var handler: AuthStateDidChangeListenerHandle?
     
     func login() {
         guard validate() else { return }
         
         AuthenticationManager.shared.login(email: email, password: password)
         
-        if Auth.auth().currentUser == nil {
+        if currentUser == "" {
             msg = "Sai thông tin tài khoản hoặc mật khẩu!"
         }
     }

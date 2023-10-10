@@ -53,6 +53,7 @@
 		5C3AF10D2ACD4B2D008E1ABE /* SeeAllView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C3AF10C2ACD4B2D008E1ABE /* SeeAllView.swift */; };
 		5C3AF10F2ACDAE31008E1ABE /* SeeAllViewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C3AF10E2ACDAE31008E1ABE /* SeeAllViewViewModel.swift */; };
 		5C3AF1112ACDB84D008E1ABE /* TransactionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C3AF1102ACDB84D008E1ABE /* TransactionManager.swift */; };
+		5C3AF1132ACF2F90008E1ABE /* CreditManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C3AF1122ACF2F90008E1ABE /* CreditManager.swift */; };
 		5C8693492ABEBFEC0029BAC7 /* CardStack in Frameworks */ = {isa = PBXBuildFile; productRef = 5C8693482ABEBFEC0029BAC7 /* CardStack */; };
 		5C8693502AC2B5BC0029BAC7 /* AddCrediCardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C86934F2AC2B5BC0029BAC7 /* AddCrediCardViewModel.swift */; };
 		5C8693542AC2C1F80029BAC7 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C8693532AC2C1F80029BAC7 /* ImagePicker.swift */; };
@@ -108,6 +109,7 @@
 		5C3AF10C2ACD4B2D008E1ABE /* SeeAllView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeeAllView.swift; sourceTree = "<group>"; };
 		5C3AF10E2ACDAE31008E1ABE /* SeeAllViewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeeAllViewViewModel.swift; sourceTree = "<group>"; };
 		5C3AF1102ACDB84D008E1ABE /* TransactionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionManager.swift; sourceTree = "<group>"; };
+		5C3AF1122ACF2F90008E1ABE /* CreditManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreditManager.swift; sourceTree = "<group>"; };
 		5C86934F2AC2B5BC0029BAC7 /* AddCrediCardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCrediCardViewModel.swift; sourceTree = "<group>"; };
 		5C8693532AC2C1F80029BAC7 /* ImagePicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 		5CC9F08D2AC3367000070777 /* DreamViewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DreamViewViewModel.swift; sourceTree = "<group>"; };
@@ -330,6 +332,7 @@
 			children = (
 				5C3291672AC5FA4F005B362E /* AuthenticationManager.swift */,
 				5C3AF1102ACDB84D008E1ABE /* TransactionManager.swift */,
+				5C3AF1122ACF2F90008E1ABE /* CreditManager.swift */,
 			);
 			path = DTOs;
 			sourceTree = "<group>";
@@ -458,6 +461,7 @@
 				5C20A8582AB985BB0037AB96 /* RecentTransactionList.swift in Sources */,
 				5C20A83E2AB497670037AB96 /* HomeView.swift in Sources */,
 				5C3AF10D2ACD4B2D008E1ABE /* SeeAllView.swift in Sources */,
+				5C3AF1132ACF2F90008E1ABE /* CreditManager.swift in Sources */,
 				5C220FF92AC80620001667C4 /* InfoViewViewModel.swift in Sources */,
 				5C03F4FE2AB3547500BF8F11 /* LoginView.swift in Sources */,
 				5C03F4EA2AB3407C00BF8F11 /* ContentView.swift in Sources */,
