@@ -28,7 +28,7 @@ struct ContentView: View {
                 QRView(userId: "rjAHDPqtNpTzMQ7UK5acmnRrOAH3")
             }
             else if viewModel.selectedTab == 2 {
-                DreamView()
+                DreamView(userId: "rjAHDPqtNpTzMQ7UK5acmnRrOAH3")
             }
             else if viewModel.selectedTab == 3 {
                 InfoView()

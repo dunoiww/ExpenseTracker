@@ -6,16 +6,40 @@
 //
 
 import Foundation
+import FirebaseAuth
 
 class AddDreamViewModel: ObservableObject {
     init() {}
     
     @Published var dream = ""
-    @Published var amount = 0.0
+    @Published var currentAmount: Double = 0.0
+    @Published var amount: Double = 0.0
     @Published var dateStart = Date()
     @Published var dateExpect = Date()
     
     func save() {
+        guard let userId = Auth.auth().currentUser?.uid else { return }
+        guard canSave else { return }
         
+        let newId = UUID().uuidString
+        
+        DreamManager.shared.addDream(userId: userId, id: newId, dream: dream, currentAmount: currentAmount, amount: amount, dateStart: DateFormatter.vietnameseDateFormat.string(from: dateStart), dateExpect: DateFormatter.vietnameseDateFormat.string(from: dateExpect))
+    }
+    
+    var canSave: Bool {
+        guard !dream.trimmingCharacters(in: .whitespaces).isEmpty &&
+                amount != 0.0 &&
+                dateExpect >= dateStart
+        else {
+            return false
+        }
+        return true
+    }
+    
+    func daysDifference() -> Int {
+        let calendar = Calendar.current
+        let components = calendar.dateComponents([.day], from: dateStart, to: dateExpect)
+        
+        return components.day ?? 0
     }
 }

@@ -7,34 +7,61 @@
 
 import SwiftUI
 import SwiftUICharts
+import FirebaseFirestoreSwift
 
 struct DreamView: View {
     @StateObject var viewModel = DreamViewViewModel()
+    @FirestoreQuery var dreams: [DreamGoal]
+    
+    init(userId: String) {
+        self._dreams = FirestoreQuery(collectionPath: "users/\(userId)/dreams")
+    }
     
     var body: some View {
         NavigationView {
-            ScrollView {
+            VStack {
                 
-                Text("The List of your Dream!")
+                Text("Danh sách ước mơ của bạn!")
                     .font(.title)
                     .padding()
                 
-                ForEach(viewModel.dreamGoalList) { dream in
-                    NavigationLink {
-                        DreamDetailView(dreamGoal: dream)
-                    } label: {
-                        VStack {
-                            DreamGoalRow(dreamgoal: dream)
+//                ForEach(dreams) { dream in
+//                    NavigationLink {
+//                        DreamDetailView(dreamGoal: dream)
+//                    } label: {
+//                        VStack {
+//                            DreamGoalRow(dreamgoal: dream)
+//                        }
+//                        .padding(.horizontal)
+//                    }
+//                }
+                List {
+                    ForEach(Array(viewModel.groupDreamByMonth(dreams: dreams)), id: \.key) { state, Dreams in
+                        Section {
+                            ForEach(Dreams) { Dream in
+                                NavigationLink {
+                                    DreamDetailView(dreamGoal: Dream)
+                                } label: {
+                                    Text(Dream.dream)
+                                }
+                            }
+                        } header: {
+                            Text(state)
                         }
-                        .padding(.horizontal)
+                        .listRowSeparator(.hidden)
                     }
                 }
+                .listStyle(.plain)
+                .scrollContentBackground(.hidden)
+                .background(.white)
+                
+                .cornerRadius(20)
+                .padding()
                 
                 RoundedRectangle(cornerRadius: 20)
                     .frame(height: 50)
                     .foregroundColor(Color("Background"))
             }
-            .background(Color("Background"))
             .toolbar {
                 ToolbarItem {
                     Image(systemName: "bell.badge")
@@ -43,18 +70,19 @@ struct DreamView: View {
                 }
                 
                 ToolbarItem(placement: .navigationBarLeading) {
-                    Text("Dream Goal")
+                    Text("Ước Mơ")
                         .foregroundColor(.black)
                         .font(.system(size: 30))
                         .bold()
                 }
             }
+            .background(Color("Background"))
         }
     }
 }
 
 struct DreamView_Previews: PreviewProvider {
     static var previews: some View {
-        DreamView()
+        DreamView(userId: "rjAHDPqtNpTzMQ7UK5acmnRrOAH3")
     }
 }

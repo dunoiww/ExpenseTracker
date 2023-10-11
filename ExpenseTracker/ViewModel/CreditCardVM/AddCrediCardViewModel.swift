@@ -18,7 +18,6 @@ class AddCrediCardViewModel: ObservableObject {
     @Published var isChoose: Bank? = nil
     @Published var showPhotoLibrary = false
     @Published var image: UIImage?
-    @Published var message = ""
     
     func save() async throws {
         

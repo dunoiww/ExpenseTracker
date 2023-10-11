@@ -7,13 +7,14 @@
 
 import Foundation
 
-struct DreamGoal: Identifiable {
-    var id: UUID
+struct DreamGoal: Identifiable, Codable {
+    var id: String
     var dream: String
     var currentMoney: Double
     var expectedMoney: Double
     var dateStart: String
     var dateExpected: String
+    var isFinish: Int
     
     var dateStartParsed: Date {
         dateStart.dateParsed()

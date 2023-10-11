@@ -33,8 +33,3 @@ enum NetworkingError: Error {
 
 let vietnameseLocale: Locale = Locale(identifier: "vi_VN")
 
-//extension Date: Strideable {
-//    func formatted() -> String {
-//        return self.formatted(.dateTime.year().month().day())
-//    }
-//}

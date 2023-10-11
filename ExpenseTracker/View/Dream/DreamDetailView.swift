@@ -8,13 +8,13 @@
 import SwiftUI
 
 struct DreamDetailView: View {
-    @ObservedObject var viewModel = DreamViewViewModel()
+    @StateObject var viewModel = DreamDetailViewViewModel()
     let dreamGoal: DreamGoal
     
     var body: some View {
             ScrollView {
                 NavigationLink {
-                    AddMoneyDream()
+                    AddMoneyDream(dream: dreamGoal)
                 } label: {
                     Image("piggy")
                         .resizable()
@@ -25,7 +25,7 @@ struct DreamDetailView: View {
                     ZStack {
                         ProgressBar(value: Float(dreamGoal.currentMoney / dreamGoal.expectedMoney))
                         
-                        Text("\(Int(Float(dreamGoal.currentMoney / dreamGoal.expectedMoney) * 100))% completed")
+                        Text("\(Int(Float(dreamGoal.currentMoney / dreamGoal.expectedMoney) * 100))% Hoàn thành")
                             .foregroundColor(.white)
                     }
                 }
@@ -33,7 +33,7 @@ struct DreamDetailView: View {
                 
                 VStack {
                     HStack {
-                        Text("Money: ")
+                        Text("Hiện tại: ")
                             .font(.system(size: 26))
                             .fontWeight(.medium)
                         Spacer()
@@ -45,7 +45,7 @@ struct DreamDetailView: View {
                     .padding(.bottom, 1)
                     
                     HStack {
-                        Text("Goal: ")
+                        Text("Mục tiêu: ")
                             .font(.system(size: 25))
                             .fontWeight(.medium)
                         Spacer()
@@ -57,7 +57,7 @@ struct DreamDetailView: View {
                     .padding(.bottom, 1)
                     
                     HStack {
-                        Text("Start Day: ")
+                        Text("Ngày bắt đầu: ")
                             .font(.system(size: 25))
                             .fontWeight(.medium)
                         Spacer()
@@ -69,7 +69,7 @@ struct DreamDetailView: View {
                     .padding(.bottom, 1)
                     
                     HStack {
-                        Text("Expected Day: ")
+                        Text("Ngày kết thúc: ")
                             .font(.system(size: 25))
                             .fontWeight(.medium)
                         Spacer()
@@ -84,6 +84,18 @@ struct DreamDetailView: View {
             .background(Color("Background"))
             .navigationTitle(dreamGoal.dream)
             .navigationBarTitleDisplayMode(.inline)
+            .onAppear {
+                if dreamGoal.currentMoney >= dreamGoal.expectedMoney {
+                    viewModel.showingAlert.toggle()
+                }
+            }
+            .alert(isPresented: $viewModel.showingAlert) {
+                Alert(
+                    title: Text("Thật tuyệt"),
+                    message: Text("Ước mơ này của bạn đã được hoàn thành!"),
+                    dismissButton: .default (Text("Tuyệt"))
+                )
+            }
         
     }
 }

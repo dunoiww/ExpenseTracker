@@ -34,18 +34,18 @@ var creditListPreviewData = [
     CreditCard(id: "6", bank: "OCBank", name: "Ngo Nam", numID: "123", amount: 1000, qrImage: "xyc")
 ]
 
-var dreamGoalPreviewData = DreamGoal(id: UUID(), dream: "Buy House", currentMoney: 1234567, expectedMoney: 10000000, dateStart: "15/09/2023", dateExpected: "20/09/2023")
+var dreamGoalPreviewData = DreamGoal(id: "12", dream: "Buy House", currentMoney: 1234567, expectedMoney: 10000000, dateStart: "15/09/2023", dateExpected: "20/09/2023", isFinish: 0)
 
 var dreamGoalListPreviewData = [
-    DreamGoal(id: UUID(), dream: "Buy House", currentMoney: 100000, expectedMoney: 10000000, dateStart: "15/09/2023", dateExpected: "20/09/2023"),
-    DreamGoal(id: UUID(), dream: "Buy Car", currentMoney: 200000, expectedMoney: 20000000, dateStart: "16/09/2023", dateExpected: "21/09/2023"),
-    DreamGoal(id: UUID(), dream: "Buy iPhone", currentMoney: 300000, expectedMoney: 30000000, dateStart: "17/09/2023", dateExpected: "22/09/2023"),
-    DreamGoal(id: UUID(), dream: "Buy MacBook", currentMoney: 400000, expectedMoney: 40000000, dateStart: "18/09/2023", dateExpected: "23/09/2023"),
-    DreamGoal(id: UUID(), dream: "Buy Apple Watch", currentMoney: 50000000, expectedMoney: 50000000, dateStart: "19/09/2023", dateExpected: "24/09/2023"),
-    DreamGoal(id: UUID(), dream: "Buy Island", currentMoney: 600000, expectedMoney: 60000000, dateStart: "20/09/2023", dateExpected: "25/09/2023"),
-    DreamGoal(id: UUID(), dream: "Buy Plane", currentMoney: 700000, expectedMoney: 70000000, dateStart: "21/09/2023", dateExpected: "26/09/2023"),
-    DreamGoal(id: UUID(), dream: "Buy Plane", currentMoney: 700000, expectedMoney: 70000000, dateStart: "21/09/2023", dateExpected: "26/09/2023"),
-    DreamGoal(id: UUID(), dream: "Buy Plane", currentMoney: 700000, expectedMoney: 70000000, dateStart: "21/09/2023", dateExpected: "26/09/2023"),
-    DreamGoal(id: UUID(), dream: "Buy Plane", currentMoney: 700000, expectedMoney: 70000000, dateStart: "21/09/2023", dateExpected: "26/09/2023"),
-    DreamGoal(id: UUID(), dream: "Buy Plane", currentMoney: 700000, expectedMoney: 70000000, dateStart: "21/09/2023", dateExpected: "26/09/2023"),
+    DreamGoal(id: "1", dream: "Buy House", currentMoney: 100000, expectedMoney: 10000000, dateStart: "15/09/2023", dateExpected: "20/09/2023", isFinish: 0),
+    DreamGoal(id: "2", dream: "Buy Car", currentMoney: 200000, expectedMoney: 20000000, dateStart: "16/09/2023", dateExpected: "21/09/2023", isFinish: 0),
+    DreamGoal(id: "3", dream: "Buy iPhone", currentMoney: 300000, expectedMoney: 30000000, dateStart: "17/09/2023", dateExpected: "22/09/2023", isFinish: 0),
+    DreamGoal(id: "4", dream: "Buy MacBook", currentMoney: 400000, expectedMoney: 40000000, dateStart: "18/09/2023", dateExpected: "23/09/2023", isFinish: 0),
+    DreamGoal(id: "5", dream: "Buy Apple Watch", currentMoney: 50000000, expectedMoney: 50000000, dateStart: "19/09/2023", dateExpected: "24/09/2023", isFinish: 0),
+    DreamGoal(id: "6", dream: "Buy Island", currentMoney: 600000, expectedMoney: 60000000, dateStart: "20/09/2023", dateExpected: "25/09/2023", isFinish: 0),
+    DreamGoal(id: "7", dream: "Buy Plane", currentMoney: 700000, expectedMoney: 70000000, dateStart: "21/09/2023", dateExpected: "26/09/2023", isFinish: 0),
+    DreamGoal(id: "8", dream: "Buy Plane", currentMoney: 700000, expectedMoney: 70000000, dateStart: "21/09/2023", dateExpected: "26/09/2023", isFinish: 0),
+    DreamGoal(id: "9", dream: "Buy Plane", currentMoney: 700000, expectedMoney: 70000000, dateStart: "21/09/2023", dateExpected: "26/09/2023", isFinish: 0),
+    DreamGoal(id: "10", dream: "Buy Plane", currentMoney: 700000, expectedMoney: 70000000, dateStart: "21/09/2023", dateExpected: "26/09/2023", isFinish: 0),
+    DreamGoal(id: "11", dream: "Buy Plane", currentMoney: 700000, expectedMoney: 70000000, dateStart: "21/09/2023", dateExpected: "26/09/2023", isFinish: 0),
 ]

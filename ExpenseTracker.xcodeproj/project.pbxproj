@@ -54,6 +54,8 @@
 		5C3AF10F2ACDAE31008E1ABE /* SeeAllViewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C3AF10E2ACDAE31008E1ABE /* SeeAllViewViewModel.swift */; };
 		5C3AF1112ACDB84D008E1ABE /* TransactionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C3AF1102ACDB84D008E1ABE /* TransactionManager.swift */; };
 		5C3AF1132ACF2F90008E1ABE /* CreditManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C3AF1122ACF2F90008E1ABE /* CreditManager.swift */; };
+		5C5BA2852AD5ADB20025E470 /* DreamManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C5BA2842AD5ADB20025E470 /* DreamManager.swift */; };
+		5C5BA2872AD63B8D0025E470 /* DreamDetailViewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C5BA2862AD63B8D0025E470 /* DreamDetailViewViewModel.swift */; };
 		5C8693492ABEBFEC0029BAC7 /* CardStack in Frameworks */ = {isa = PBXBuildFile; productRef = 5C8693482ABEBFEC0029BAC7 /* CardStack */; };
 		5C8693502AC2B5BC0029BAC7 /* AddCrediCardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C86934F2AC2B5BC0029BAC7 /* AddCrediCardViewModel.swift */; };
 		5C8693542AC2C1F80029BAC7 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C8693532AC2C1F80029BAC7 /* ImagePicker.swift */; };
@@ -110,6 +112,8 @@
 		5C3AF10E2ACDAE31008E1ABE /* SeeAllViewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeeAllViewViewModel.swift; sourceTree = "<group>"; };
 		5C3AF1102ACDB84D008E1ABE /* TransactionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionManager.swift; sourceTree = "<group>"; };
 		5C3AF1122ACF2F90008E1ABE /* CreditManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreditManager.swift; sourceTree = "<group>"; };
+		5C5BA2842AD5ADB20025E470 /* DreamManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DreamManager.swift; sourceTree = "<group>"; };
+		5C5BA2862AD63B8D0025E470 /* DreamDetailViewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DreamDetailViewViewModel.swift; sourceTree = "<group>"; };
 		5C86934F2AC2B5BC0029BAC7 /* AddCrediCardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCrediCardViewModel.swift; sourceTree = "<group>"; };
 		5C8693532AC2C1F80029BAC7 /* ImagePicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 		5CC9F08D2AC3367000070777 /* DreamViewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DreamViewViewModel.swift; sourceTree = "<group>"; };
@@ -234,7 +238,6 @@
 			children = (
 				5C20A8502AB8A6240037AB96 /* TransactionRow.swift */,
 				5CC9F08F2AC33DDD00070777 /* DreamGoalRow.swift */,
-				5CC9F0912AC3537A00070777 /* DreamDetailView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -242,6 +245,7 @@
 		5C2DC2382ABB789D00EF2032 /* Dream */ = {
 			isa = PBXGroup;
 			children = (
+				5CC9F0912AC3537A00070777 /* DreamDetailView.swift */,
 				5C20A8432AB4B07B0037AB96 /* DreamView.swift */,
 				5C2DC2362ABB74FA00EF2032 /* AddDream.swift */,
 				5CF0BEC92AC5425400E3B573 /* AddMoneyDream.swift */,
@@ -333,6 +337,7 @@
 				5C3291672AC5FA4F005B362E /* AuthenticationManager.swift */,
 				5C3AF1102ACDB84D008E1ABE /* TransactionManager.swift */,
 				5C3AF1122ACF2F90008E1ABE /* CreditManager.swift */,
+				5C5BA2842AD5ADB20025E470 /* DreamManager.swift */,
 			);
 			path = DTOs;
 			sourceTree = "<group>";
@@ -353,6 +358,7 @@
 				5CC9F08D2AC3367000070777 /* DreamViewViewModel.swift */,
 				5CC9F0932AC3F00A00070777 /* AddDreamViewModel.swift */,
 				5CF0BECB2AC5480F00E3B573 /* AddMoneyDreamViewModel.swift */,
+				5C5BA2862AD63B8D0025E470 /* DreamDetailViewViewModel.swift */,
 			);
 			path = DreamVM;
 			sourceTree = "<group>";
@@ -444,6 +450,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				5C03F5022AB35F2200BF8F11 /* ButtonLog.swift in Sources */,
+				5C5BA2852AD5ADB20025E470 /* DreamManager.swift in Sources */,
+				5C5BA2872AD63B8D0025E470 /* DreamDetailViewViewModel.swift in Sources */,
 				5C2DC2352ABB74D700EF2032 /* AddCreditCard.swift in Sources */,
 				5C20A84E2AB4BE0D0037AB96 /* SettingView.swift in Sources */,
 				5C20A85C2AB990380037AB96 /* TransactionRowViewModel.swift in Sources */,

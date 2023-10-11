@@ -30,13 +30,19 @@ struct SeeAllView: View {
                         Text(month)
                     }
                     .listRowSeparator(.hidden)
+                    .listRowBackground(Color("Background"))
                 }
             }
             .listStyle(.plain)
-            
+            .background(Color("Background"))
+           
+            RoundedRectangle(cornerRadius: 20)
+                .frame(height: 50)
+                .foregroundColor(Color("Background"))
         }
         .navigationTitle("Lịch sử giao dịch")
         .navigationBarTitleDisplayMode(.inline)
+        .background(Color("Background"))
     }
 }
 
