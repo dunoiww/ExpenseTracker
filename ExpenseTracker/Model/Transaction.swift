@@ -15,6 +15,8 @@ struct Transaction: Identifiable, Codable {
     var note: String
     var date: String
     var type: TransactionType.RawValue
+    var typePurchase: String
+    var bankId: String
     var category: String
     var categoryId: Int
     

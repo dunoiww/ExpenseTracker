@@ -17,13 +17,6 @@ class HomeViewViewModel: ObservableObject {
     @Published var data: TransactionPrefixSum = []
     @Published var total = 0.0
     
-    //    func getData() -> TransactionPrefixSum{
-    //        self.accumulateTransactions { tran in
-    //            self.data = tran
-    //        }
-    //        return data
-    //    }
-    
     var transactions: [Transaction] = []
     var userId = Auth.auth().currentUser?.uid
     

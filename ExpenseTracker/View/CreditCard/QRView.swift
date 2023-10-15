@@ -13,6 +13,7 @@ import FirebaseFirestoreSwift
 struct QRView: View {
     @StateObject var viewModel = QRViewViewModel()
     @FirestoreQuery var credits: [CreditCard]
+    @EnvironmentObject var currencyManager: CurrencyManager
     
     init(userId: String) {
         self._credits = FirestoreQuery(collectionPath: "users/\(userId)/creditCards")
@@ -38,7 +39,7 @@ struct QRView: View {
                                         .foregroundColor(.gray)
                                         .italic()
                                     
-                                    Text(card.amount, format: .currency(code: "VND"))
+                                    Text(card.amount, format: .currency(code: currencyManager.currentCurrency))
                                         .font(.system(size: 25))
                                         .fontWeight(.semibold)
                                         .foregroundColor(.pink)
@@ -148,5 +149,6 @@ struct QRView: View {
 struct QRView_Previews: PreviewProvider {
     static var previews: some View {
         QRView(userId: "rjAHDPqtNpTzMQ7UK5acmnRrOAH3")
+            .environmentObject(CurrencyManager())
     }
 }

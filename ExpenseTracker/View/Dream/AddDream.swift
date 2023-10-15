@@ -10,6 +10,8 @@ import SwiftUI
 struct AddDream: View {
     @Environment(\.dismiss) var dismiss
     @StateObject var viewModel = AddDreamViewModel()
+    @EnvironmentObject var currencyManager: CurrencyManager
+    
     var body: some View {
         ZStack {
             LinearGradient(gradient: Gradient(colors: [Color("Transaction"), .white]), startPoint: .top, endPoint: .bottom)
@@ -68,7 +70,7 @@ struct AddDream: View {
                             .font(.system(size: 20))
                     }
                     
-                    LabeledContent("Mỗi ngày", value: ((viewModel.amount - viewModel.currentAmount)/Double(viewModel.daysDifference())).rounded(), format: .number)
+                    LabeledContent("Mỗi ngày:", value: viewModel.daybyday, format: .currency(code: currencyManager.currentCurrency))
                         .font(.system(size: 20))
                     
                     .listRowBackground(Color.white.opacity(0.8))
@@ -97,4 +99,5 @@ struct AddDream: View {
 
 #Preview {
     AddDream()
+        .environmentObject(CurrencyManager())
 }

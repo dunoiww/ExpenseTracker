@@ -10,6 +10,7 @@ import SwiftUIFontIcon
 
 struct TransactionRow: View {
     var transaction: Transaction
+    @EnvironmentObject var currencyManager: CurrencyManager
     
     var body: some View {
         ZStack {
@@ -57,10 +58,11 @@ struct TransactionRow: View {
                 Spacer()
                 
                 VStack(alignment: .trailing) {
-                    Text(transaction.signedAmount, format: .currency(code: "VND"))
+                    Text(transaction.signedAmount, format: .currency(code: currencyManager.currentCurrency))
                         .font(.headline)
                         .bold()
                         .foregroundColor(transaction.signedAmount > 0 ? Color("amountGreen") : .red)
+                        .lineLimit(1)
                     
                     Text(DateFormatter.vietnameseDateFormat.string(from: transaction.dateParsed))
                         .font(.footnote)
@@ -76,5 +78,6 @@ struct TransactionRow: View {
 struct TransactionRow_Previews: PreviewProvider {
     static var previews: some View {
         TransactionRow(transaction: transactionPreviewData)
+            .environmentObject(CurrencyManager())
     }
 }

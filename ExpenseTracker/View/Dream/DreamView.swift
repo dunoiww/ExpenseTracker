@@ -12,6 +12,7 @@ import FirebaseFirestoreSwift
 struct DreamView: View {
     @StateObject var viewModel = DreamViewViewModel()
     @FirestoreQuery var dreams: [DreamGoal]
+    @EnvironmentObject var currencyManager: CurrencyManager
     
     init(userId: String) {
         self._dreams = FirestoreQuery(collectionPath: "users/\(userId)/dreams")
@@ -24,17 +25,6 @@ struct DreamView: View {
                 Text("Danh sách ước mơ của bạn!")
                     .font(.title)
                     .padding()
-                
-//                ForEach(dreams) { dream in
-//                    NavigationLink {
-//                        DreamDetailView(dreamGoal: dream)
-//                    } label: {
-//                        VStack {
-//                            DreamGoalRow(dreamgoal: dream)
-//                        }
-//                        .padding(.horizontal)
-//                    }
-//                }
                 List {
                     ForEach(Array(viewModel.groupDreamByMonth(dreams: dreams)), id: \.key) { state, Dreams in
                         Section {
@@ -54,7 +44,6 @@ struct DreamView: View {
                 .listStyle(.plain)
                 .scrollContentBackground(.hidden)
                 .background(.white)
-                
                 .cornerRadius(20)
                 .padding()
                 
@@ -84,5 +73,6 @@ struct DreamView: View {
 struct DreamView_Previews: PreviewProvider {
     static var previews: some View {
         DreamView(userId: "rjAHDPqtNpTzMQ7UK5acmnRrOAH3")
+            .environmentObject(CurrencyManager())
     }
 }

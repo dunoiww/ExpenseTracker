@@ -14,10 +14,10 @@ class TransactionManager {
     
     init() {}
     
-    func saveTransaction(id: String, title: String, selectedDate: String, note: String, amount: Double, type: TransactionType.RawValue, category: String, categoryId: Int) async throws {
+    func saveTransaction(id: String, title: String, selectedDate: String, note: String, amount: Double, type: TransactionType.RawValue, typePurchase: String, bankId: String, category: String, categoryId: Int) async throws {
         
         let newId = UUID().uuidString
-        let newTransaction = Transaction(id: newId, title: title, amount: amount, note: note, date: selectedDate, type: type, category: category, categoryId: categoryId)
+        let newTransaction = Transaction(id: newId, title: title, amount: amount, note: note, date: selectedDate, type: type, typePurchase: typePurchase, bankId: bankId, category: category, categoryId: categoryId)
         
         let db = Firestore.firestore()
         try await db.collection("users")
@@ -42,6 +42,8 @@ class TransactionManager {
                                               note: document["note"] as? String ?? "",
                                               date: document["date"] as? String ?? "",
                                               type: document["type"] as? TransactionType.RawValue ?? "",
+                                              typePurchase: document["tyepPurchase"] as? String ?? "",
+                                              bankId: document["bankId"] as? String ?? "",
                                               category: document["category"] as? String ?? "",
                                               categoryId: document["categoryId"] as? Int ?? 0)
                 

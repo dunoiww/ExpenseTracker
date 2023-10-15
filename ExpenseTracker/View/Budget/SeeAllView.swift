@@ -11,6 +11,7 @@ import FirebaseFirestoreSwift
 struct SeeAllView: View {
     @StateObject var viewModel = SeeAllViewViewModel()
     @FirestoreQuery var transactions: [Transaction]
+    @EnvironmentObject var currencyManager: CurrencyManager
     
     init(userId: String) {
         self._transactions = FirestoreQuery(collectionPath: "users/\(userId)/transactions", predicates: [.order(by: "date", descending: true)])
@@ -22,8 +23,14 @@ struct SeeAllView: View {
                     Section {
                         //MARK: transaction by month
                         ForEach(transactions) { transaction in
-                            TransactionRow(transaction: transaction)
-                                .listRowInsets(EdgeInsets(top: 5, leading: 5, bottom: 5, trailing: 5))
+                            NavigationLink {
+                                DetailTransactionView(transaction: transaction)
+                            } label: {
+                                TransactionRow(transaction: transaction)
+                                
+                            }
+                            .offset(x: 15)
+                            .listRowInsets(EdgeInsets(top: 5, leading: -6, bottom: 5, trailing: 5))
                         }
                     } header: {
                         //MARK: month
@@ -49,5 +56,6 @@ struct SeeAllView: View {
 #Preview {
     NavigationView {
         SeeAllView(userId: "rjAHDPqtNpTzMQ7UK5acmnRrOAH3")
+            .environmentObject(CurrencyManager())
     }
 }

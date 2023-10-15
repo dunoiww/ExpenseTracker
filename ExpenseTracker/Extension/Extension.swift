@@ -33,3 +33,9 @@ enum NetworkingError: Error {
 
 let vietnameseLocale: Locale = Locale(identifier: "vi_VN")
 
+func daysDifference(dateStart: Date, dateExpect: Date) -> Int {
+    let calendar = Calendar.current
+    let components = calendar.dateComponents([.day], from: dateStart, to: dateExpect)
+    
+    return components.day ?? 0
+}

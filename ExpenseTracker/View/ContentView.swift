@@ -125,7 +125,7 @@ struct ContentView: View {
         }
         .background(Color("Background"))
         .sheet(isPresented: $viewModel.showAddBudget) {
-            AddBudget()
+            AddBudget(userId: "rjAHDPqtNpTzMQ7UK5acmnRrOAH3")
         }
         .sheet(isPresented: $viewModel.showAddCrediCard) {
             AddCreditCard()

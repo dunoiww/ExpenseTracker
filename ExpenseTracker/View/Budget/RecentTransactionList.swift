@@ -11,6 +11,7 @@ import FirebaseFirestoreSwift
 struct RecentTransactionList: View {
     @StateObject var viewModel = RecentTransactionListViewModel()
     @FirestoreQuery var transaction: [Transaction]
+    @EnvironmentObject var currencyManager: CurrencyManager
     
     init(userId: String) {
         self._transaction = FirestoreQuery(collectionPath: "users/\(userId)/transactions", predicates: [.order(by: "date", descending: true)])
@@ -56,5 +57,6 @@ struct RecentTransactionList: View {
 struct RecentTransactionList_Previews: PreviewProvider {
     static var previews: some View {
         RecentTransactionList(userId: "rjAHDPqtNpTzMQ7UK5acmnRrOAH3")
+            .environmentObject(CurrencyManager())
     }
 }

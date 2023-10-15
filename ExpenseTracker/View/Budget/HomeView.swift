@@ -11,6 +11,7 @@ import SwiftUICharts
 
 struct HomeView: View {
     @StateObject var viewModel = HomeViewViewModel()
+    @EnvironmentObject var currencyManager: CurrencyManager
     
     var demoData: [Double] = [8, 2, 4, 6, 12, 9, 2]
     
@@ -92,9 +93,6 @@ struct HomeView: View {
             .task {
                 do {
                     viewModel.data = try await viewModel.accumulateTransactions()
-                    //                    DispatchQueue.main.async {
-                    //                        viewModel.total = viewModel.data.last?.1 ?? 0
-                    //                    }
                 } catch {
                     print(error)
                 }
@@ -107,5 +105,6 @@ struct HomeView: View {
 struct HomeView_Previews: PreviewProvider {
     static var previews: some View {
         HomeView()
+            .environmentObject(CurrencyManager())
     }
 }

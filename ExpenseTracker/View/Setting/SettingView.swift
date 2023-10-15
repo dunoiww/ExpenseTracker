@@ -9,6 +9,8 @@ import SwiftUI
 import SwiftUICharts
 
 struct SettingView: View {
+    @StateObject var viewModel = SettingViewViewModel()
+    @EnvironmentObject var currencyManager: CurrencyManager
     var body: some View {
         VStack {
             VStack {
@@ -19,19 +21,24 @@ struct SettingView: View {
                         .fontWeight(.semibold)
                         .padding(.leading, 4)
                     Spacer()
-                    Image(systemName: "chevron.right")
+                    Picker("Chọn tiền tệ", selection: $currencyManager.currentCurrency) {
+                        ForEach(viewModel.currencies, id: \.self) {
+                            Text($0)
+                        }
+                    }
+                    .tint(.black)
                 }
                 
-                Divider()
-                
-                HStack {
-                    Image(systemName: "textformat")
-                    Text("Chuyển đổi  ngôn ngữ")
-                        .font(.system(size: 20))
-                        .fontWeight(.semibold)
-                    Spacer()
-                    Image(systemName: "chevron.right")
-                }
+//                Divider()
+//                
+//                HStack {
+//                    Image(systemName: "textformat")
+//                    Text("Chuyển đổi ngôn ngữ")
+//                        .font(.system(size: 20))
+//                        .fontWeight(.semibold)
+//                    Spacer()
+//                    Image(systemName: "chevron.right")
+//                }
             }
             .padding()
             .background(.white)
@@ -50,6 +57,7 @@ struct SettingView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
             SettingView()
+                .environmentObject(CurrencyManager())
         }
     }
 }

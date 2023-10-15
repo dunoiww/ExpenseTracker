@@ -10,6 +10,7 @@ import SwiftUICharts
 
 struct InfoView: View {
     @StateObject var viewModel = InfoViewViewModel()
+    @EnvironmentObject var currencyManager: CurrencyManager
     var body: some View {
         NavigationView {
             ScrollView {
@@ -44,7 +45,7 @@ struct InfoView: View {
                                 .fontWeight(.thin)
                                 .frame(maxWidth: .infinity, alignment: .leading)
                                 .padding(.horizontal)
-                                .offset(x: 15, y: 25)
+                                .offset(x: 22, y: 22)
                             
                             CardView {
                                 VStack {
@@ -67,7 +68,7 @@ struct InfoView: View {
                                     Divider()
                                     
                                     NavigationLink {
-                                        
+                                        SearchView()
                                     } label: {
                                         HStack {
                                             Text("Tìm kiếm")
@@ -82,14 +83,6 @@ struct InfoView: View {
                                     }
                                     .frame(maxWidth: .infinity, alignment: .leading)
                                     
-                                    Divider()
-                                    
-                                    HStack {
-                                        Text("Xuất dữ liệu")
-                                            .font(.system(size: 20))
-                                            .fontWeight(.semibold)
-                                    }
-                                    .frame(maxWidth: .infinity, alignment: .leading)
                                 }
                                 .padding()
                             }
@@ -106,17 +99,21 @@ struct InfoView: View {
                                 .fontWeight(.thin)
                                 .frame(maxWidth: .infinity, alignment: .leading)
                                 .padding(.horizontal)
-                                .offset(x: 15, y: 25)
+                                .offset(x: 22, y: 22)
                             
                             CardView {
                                 VStack {
                                     NavigationLink {
-                                        
+                                        HelpView()
                                     } label: {
                                         HStack {
                                             Text("Trợ giúp")
                                                 .font(.system(size: 20))
                                                 .fontWeight(.semibold)
+                                            
+                                            Spacer()
+                                            
+                                            Image(systemName: "chevron.right")
                                         }
                                         .foregroundColor(.primary)
                                     }
@@ -126,7 +123,7 @@ struct InfoView: View {
                                     Divider()
                                     
                                     NavigationLink {
-                                        
+                                        AbouUsView()
                                     } label: {
                                         HStack {
                                             Text("Về chúng tôi")
@@ -145,6 +142,7 @@ struct InfoView: View {
                                     
                                     NavigationLink {
                                         SettingView()
+                                            .environmentObject(currencyManager)
                                     } label: {
                                         HStack {
                                             Text("Cài đặt")
@@ -187,12 +185,6 @@ struct InfoView: View {
                 }
                 
                 .toolbar {
-                    ToolbarItem {
-                        Image(systemName: "bell.badge")
-                            .symbolRenderingMode(.palette)
-                            .foregroundStyle(Color.blue, .primary)
-                    }
-                    
                     ToolbarItem(placement: .navigationBarLeading) {
                         Text("Thông tin")
                             .foregroundColor(.black)
@@ -229,12 +221,12 @@ struct InfoView: View {
                 .fontWeight(.thin)
                 .frame(maxWidth: .infinity, alignment: .leading)
                 .padding(.horizontal)
-                .offset(x: 15, y: 25)
+                .offset(x: 22, y: 22)
             
             CardView {
                 VStack {
                     HStack {
-                        Text("Name: ")
+                        Text("Tên: ")
                             .font(.system(size: 20))
                             .fontWeight(.semibold)
                         Spacer()
@@ -265,5 +257,6 @@ struct InfoView: View {
 struct InfoView_Previews: PreviewProvider {
     static var previews: some View {
         InfoView()
+            .environmentObject(CurrencyManager())
     }
 }

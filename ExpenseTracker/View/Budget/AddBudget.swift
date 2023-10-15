@@ -7,49 +7,85 @@
 
 import SwiftUI
 import SwiftUIFontIcon
+import FirebaseFirestoreSwift
 
 struct AddBudget: View {
     @Environment(\.dismiss) var dismiss
+    @EnvironmentObject var currencyManager: CurrencyManager
     @StateObject var viewModel = AddBudgetViewModel()
     @Namespace var animation
+    @FirestoreQuery var creditCards: [CreditCard]
+    
+    init(userId: String) {
+        self._creditCards = FirestoreQuery(collectionPath: "users/\(userId)/creditCards")
+    }
     
     var body: some View {
-        ZStack {
-            LinearGradient(gradient: Gradient(colors: [Color("Transaction"), .white]), startPoint: .top, endPoint: .bottom)
-                .ignoresSafeArea()
-            
-            
-            VStack {
-                
-                Text("Thêm giao dịch")
-                    .font(.title)
-                    .bold()
-                    .padding()
-                HStack {
-                    CustomSegmentedControl()
-                }
-                
-                if viewModel.tabName == TransactionType.expense {
-                    addTransaction(type: "Expense")
-                } else {
-                    addTransaction(type: "Income")
-                }
+        ScrollView {
+            ZStack {
+                VStack {
                     
-                Spacer()
-                
-                ButtonAdd(title: "Lưu") {
-                    Task {
-                        do {
-                            try await viewModel.save()
-                            dismiss()
-                        } catch {
-                            print(error.localizedDescription)
+                    Text("Thêm giao dịch")
+                        .font(.title)
+                        .bold()
+                        .padding()
+                    HStack {
+                        CustomSegmentedControl()
+                    }
+                    
+                    if viewModel.tabName == TransactionType.expense {
+                        addTransaction(type: "Expense")
+                    } else {
+                        addTransaction(type: "Income")
+                    }
+                    
+                    HStack {
+                        Text("")
+                        Spacer()
+                        
+                        
+                    }
+                    
+                    HStack {
+                        Text("Phương thức: ")
+                            .font(.title2)
+                            .bold().opacity(0.7)
+                        Spacer()
+                        Picker("Phương thức thanh toán", selection: $viewModel.typePurchase) {
+                            ForEach(viewModel.typePurchases, id: \.self) {
+                                Text($0)
+                            }
+                        }
+                        .tint(.black)
+                        .font(.system(size: 20))
+                    }
+                    .padding(.leading, 16)
+                    
+                    if viewModel.typePurchase == "Thẻ" {
+                        showListCards(creditCards: creditCards)
+                    }
+                    
+                    Spacer()
+                        .frame(height: 50)
+                    
+                    ButtonAdd(title: "Lưu") {
+                        Task {
+                            do {
+                                try await viewModel.save()
+                                dismiss()
+                            } catch {
+                                print(error.localizedDescription)
+                            }
                         }
                     }
+                    
                 }
-                
             }
         }
+        .background(
+            LinearGradient(gradient: Gradient(colors: [Color("Transaction"), .white]), startPoint: .top, endPoint: .bottom)
+                .ignoresSafeArea()
+        )
     }
     @ViewBuilder
     func CustomSegmentedControl() -> some View {
@@ -124,7 +160,6 @@ struct AddBudget: View {
                     .bold().opacity(0.7)
                     .padding(.trailing, 15)
                     .frame(width: 110, alignment: .leading)
-//                TextField("Giá trị", value: $viewModel.amount, format: .currency(code: "VND"))
                 
                 TextField("Giá trị", value: $viewModel.amount, format: .number)
                     .font(.system(size: 20))
@@ -166,8 +201,24 @@ struct AddBudget: View {
             }
         }
     }
+    
+    @ViewBuilder
+    func showListCards(creditCards: [CreditCard]) -> some View {
+        Text("Danh sách thẻ đang có của bạn: ")
+            .font(.system(size: 20))
+            .padding()
+        ForEach(creditCards) { credit in
+            CreditBudgetRow(creditCard: credit)
+                .onTapGesture {
+                    viewModel.chooseBank = credit
+                }
+                .foregroundColor(viewModel.chooseBank == credit ? .pink : .black)
+        }
+        .padding(.horizontal)
+    }
 }
 
 #Preview {
-    AddBudget()
+    AddBudget(userId: "rjAHDPqtNpTzMQ7UK5acmnRrOAH3")
+        .environmentObject(CurrencyManager())
 }

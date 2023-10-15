@@ -9,7 +9,7 @@ import Foundation
 import SwiftUI
 import SwiftUIFontIcon
 
-struct CreditCard: Identifiable, Codable {
+struct CreditCard: Identifiable, Codable, Equatable {
     let id: String
     let bank: String
     var name: String

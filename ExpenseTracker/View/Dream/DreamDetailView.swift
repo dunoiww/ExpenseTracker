@@ -9,12 +9,14 @@ import SwiftUI
 
 struct DreamDetailView: View {
     @StateObject var viewModel = DreamDetailViewViewModel()
+    @EnvironmentObject var currencyManager: CurrencyManager
     let dreamGoal: DreamGoal
     
     var body: some View {
             ScrollView {
                 NavigationLink {
                     AddMoneyDream(dream: dreamGoal)
+                        .environmentObject(currencyManager)
                 } label: {
                     Image("piggy")
                         .resizable()
@@ -37,7 +39,7 @@ struct DreamDetailView: View {
                             .font(.system(size: 26))
                             .fontWeight(.medium)
                         Spacer()
-                        Text(dreamGoal.currentMoney, format: .currency(code: "VND"))
+                        Text(dreamGoal.currentMoney, format: .currency(code: currencyManager.currentCurrency))
                             .font(.system(size: 20))
                             .fontWeight(.medium)
                     }
@@ -49,7 +51,7 @@ struct DreamDetailView: View {
                             .font(.system(size: 25))
                             .fontWeight(.medium)
                         Spacer()
-                        Text(dreamGoal.expectedMoney, format: .currency(code: "VND"))
+                        Text(dreamGoal.expectedMoney, format: .currency(code: currencyManager.currentCurrency))
                             .font(.system(size: 20))
                             .fontWeight(.medium)
                     }
@@ -57,13 +59,14 @@ struct DreamDetailView: View {
                     .padding(.bottom, 1)
                     
                     HStack {
-                        Text("Ngày bắt đầu: ")
+                        Text("Mỗi ngày bỏ heo: ")
                             .font(.system(size: 25))
                             .fontWeight(.medium)
                         Spacer()
-                        Text(DateFormatter.vietnameseDateFormat.string(from: dreamGoal.dateStartParsed))
+                        Text((dreamGoal.expectedMoney - dreamGoal.currentMoney)/Double(daysDifference(dateStart: dreamGoal.dateStartParsed, dateExpect: dreamGoal.dateExpectedParsed) + 1).rounded(), format: .currency(code: currencyManager.currentCurrency))
                             .font(.system(size: 20))
                             .fontWeight(.medium)
+                        
                     }
                     .padding(.horizontal)
                     .padding(.bottom, 1)
@@ -123,5 +126,6 @@ struct ProgressBar: View {
 #Preview {
     NavigationView {
         DreamDetailView(dreamGoal: dreamGoalPreviewData)
+            .environmentObject(CurrencyManager())
     }
 }

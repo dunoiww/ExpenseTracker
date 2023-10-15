@@ -36,10 +36,10 @@ class AddDreamViewModel: ObservableObject {
         return true
     }
     
-    func daysDifference() -> Int {
-        let calendar = Calendar.current
-        let components = calendar.dateComponents([.day], from: dateStart, to: dateExpect)
-        
-        return components.day ?? 0
+    var daybyday: Double {
+        if dateExpect == dateStart {
+            return amount - currentAmount
+        }
+        return ((amount - currentAmount)/Double(daysDifference(dateStart: dateStart, dateExpect: dateExpect) + 1)).rounded()
     }
 }

@@ -12,6 +12,7 @@ class AddMoneyDreamViewModel: ObservableObject {
     init() {}
     
     @Published var amount = 0.0
+    @Published var showAlert = false
     var dream: DreamGoal = dreamGoalPreviewData
     
     func save() {
@@ -26,5 +27,12 @@ class AddMoneyDreamViewModel: ObservableObject {
         guard amount != 0.0 else { return false }
         
         return true
+    }
+    
+    var isFinish: Bool {
+        if dream.currentMoney >= dream.expectedMoney {
+            return true
+        }
+        return false
     }
 }

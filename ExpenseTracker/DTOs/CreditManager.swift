@@ -27,6 +27,39 @@ class CreditManager {
             .setData(newCredit.asDictionary())
     }
     
+    func updateAmount(userId: String, id: String, amount: Double) {
+        var creditCard: CreditCard?
+        let db = Firestore.firestore()
+        db.collection("users")
+            .document(userId)
+            .collection("creditCards")
+            .document(id)
+            .getDocument { snapshot, error in
+                guard let data = snapshot?.data(), error == nil else { return }
+                
+                DispatchQueue.main.async {
+                    let creditCardtemp = CreditCard(id: data["id"] as? String ?? "",
+                                            bank: data["bank"] as? String ?? "",
+                                            name: data["name"] as? String ?? "",
+                                            numID: data["numID"] as? String ?? "",
+                                            amount: data["amount"] as? Double ?? 0.0,
+                                            qrImage: data["qrImage"] as? String ?? "")
+                    
+                    creditCard = creditCardtemp
+                    creditCard?.amount += amount
+                    
+                    
+                    db.collection("users")
+                        .document(userId)
+                        .collection("creditCards")
+                        .document(id)
+                        .setData(creditCard.asDictionary())
+                }
+            }
+        
+        
+    }
+    
     func saveQrImage(id: String, image: UIImage?) {
         guard let userId = Auth.auth().currentUser?.uid else { return }
         
